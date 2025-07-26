@@ -100,7 +100,7 @@ const Contact = () => {
                 
                 <div className="space-y-4">
                   <div className="flex items-center gap-4 p-3 rounded-lg hover:bg-muted/50 transition-colors">
-                    <div className="p-2 bg-primary/10 rounded-lg">
+                    <div className="p-2 bg-primary/10 rounded-lg skill-icon pulse-glow">
                       <Mail className="w-5 h-5 text-primary" />
                     </div>
                     <div>
@@ -110,7 +110,7 @@ const Contact = () => {
                   </div>
 
                   <div className="flex items-center gap-4 p-3 rounded-lg hover:bg-muted/50 transition-colors">
-                    <div className="p-2 bg-secondary/10 rounded-lg">
+                    <div className="p-2 bg-secondary/10 rounded-lg skill-icon pulse-glow">
                       <Phone className="w-5 h-5 text-secondary" />
                     </div>
                     <div>
@@ -120,7 +120,7 @@ const Contact = () => {
                   </div>
 
                   <div className="flex items-center gap-4 p-3 rounded-lg hover:bg-muted/50 transition-colors">
-                    <div className="p-2 bg-accent/10 rounded-lg">
+                    <div className="p-2 bg-accent/10 rounded-lg skill-icon pulse-glow">
                       <MapPin className="w-5 h-5 text-accent" />
                     </div>
                     <div>

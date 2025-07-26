@@ -62,7 +62,7 @@ const About = () => {
               {/* Professional Summary */}
               <Card className="card-3d p-6">
                 <div className="flex items-center gap-3 mb-4">
-                  <div className="p-2 bg-primary/10 rounded-lg">
+                  <div className="p-2 bg-primary/10 rounded-lg skill-icon pulse-glow">
                     <Briefcase className="w-6 h-6 text-primary" />
                   </div>
                   <h3 className="text-2xl font-semibold text-gradient">Professional Summary</h3>
@@ -79,7 +79,7 @@ const About = () => {
               {/* Key Skills */}
               <Card className="card-3d p-6">
                 <div className="flex items-center gap-3 mb-4">
-                  <div className="p-2 bg-secondary/10 rounded-lg">
+                  <div className="p-2 bg-secondary/10 rounded-lg skill-icon pulse-glow">
                     <User className="w-6 h-6 text-secondary" />
                   </div>
                   <h3 className="text-2xl font-semibold text-gradient-secondary">Key Skills</h3>
@@ -104,7 +104,7 @@ const About = () => {
               {/* Career Goals */}
               <Card className="card-3d p-6">
                 <div className="flex items-center gap-3 mb-4">
-                  <div className="p-2 bg-accent/10 rounded-lg">
+                  <div className="p-2 bg-accent/10 rounded-lg skill-icon pulse-glow">
                     <Target className="w-6 h-6 text-accent" />
                   </div>
                   <h3 className="text-2xl font-semibold text-gradient">Career Goals</h3>

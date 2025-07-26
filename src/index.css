@@ -6,59 +6,62 @@
 
 @layer base {
   :root {
-    /* Dark theme base colors */
-    --background: 222 47% 5%;
-    --foreground: 210 40% 98%;
+    /* Dark cosmos theme base colors */
+    --background: 250 20% 3%;
+    --foreground: 280 15% 95%;
 
     /* Card and surface colors */
-    --card: 222 47% 8%;
-    --card-foreground: 210 40% 98%;
+    --card: 255 25% 6%;
+    --card-foreground: 280 15% 95%;
 
-    --popover: 222 47% 8%;
-    --popover-foreground: 210 40% 98%;
+    --popover: 255 25% 6%;
+    --popover-foreground: 280 15% 95%;
 
-    /* Primary - Electric Blue */
-    --primary: 212 100% 60%;
-    --primary-foreground: 222 47% 5%;
-    --primary-glow: 212 100% 70%;
+    /* Primary - Deep Purple */
+    --primary: 270 85% 60%;
+    --primary-foreground: 250 20% 3%;
+    --primary-glow: 270 85% 70%;
 
-    /* Secondary - Cyan accent */
-    --secondary: 187 100% 50%;
-    --secondary-foreground: 222 47% 5%;
-    --secondary-glow: 187 100% 60%;
+    /* Secondary - Cosmic Blue */
+    --secondary: 250 100% 65%;
+    --secondary-foreground: 250 20% 3%;
+    --secondary-glow: 250 100% 75%;
 
     /* Muted colors */
-    --muted: 217 32% 17%;
-    --muted-foreground: 215 20% 65%;
+    --muted: 250 30% 12%;
+    --muted-foreground: 270 15% 70%;
 
-    /* Accent - Purple */
-    --accent: 271 81% 56%;
-    --accent-foreground: 210 40% 98%;
-    --accent-glow: 271 81% 66%;
+    /* Accent - Bright Purple */
+    --accent: 290 100% 70%;
+    --accent-foreground: 280 15% 95%;
+    --accent-glow: 290 100% 80%;
 
     /* Status colors */
     --destructive: 0 84% 60%;
-    --destructive-foreground: 210 40% 98%;
+    --destructive-foreground: 280 15% 95%;
 
     --success: 142 71% 45%;
-    --success-foreground: 210 40% 98%;
+    --success-foreground: 280 15% 95%;
 
     /* UI elements */
-    --border: 217 32% 17%;
-    --input: 217 32% 17%;
-    --ring: 212 100% 60%;
+    --border: 250 30% 15%;
+    --input: 250 30% 15%;
+    --ring: 270 85% 60%;
 
-    /* Gradients */
+    /* Cosmos Gradients */
     --gradient-primary: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--accent)));
     --gradient-glow: linear-gradient(135deg, hsl(var(--primary-glow)), hsl(var(--secondary-glow)));
-    --gradient-card: linear-gradient(145deg, hsl(var(--card)) 0%, hsl(217 32% 12%) 100%);
+    --gradient-card: linear-gradient(145deg, hsl(var(--card)) 0%, hsl(250 35% 8%) 100%);
     --gradient-text: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--secondary)));
+    --gradient-cosmos: linear-gradient(135deg, hsl(270 85% 20%) 0%, hsl(250 90% 15%) 25%, hsl(290 80% 25%) 50%, hsl(240 85% 20%) 75%, hsl(260 90% 10%) 100%);
+    --gradient-nebula: radial-gradient(ellipse at center, hsl(270 85% 30% / 0.3) 0%, hsl(250 90% 20% / 0.2) 30%, transparent 70%);
 
-    /* Shadows and glows */
-    --shadow-glow: 0 0 20px hsl(var(--primary) / 0.3);
-    --shadow-glow-strong: 0 0 40px hsl(var(--primary) / 0.5);
-    --shadow-card: 0 10px 30px -5px hsl(222 47% 2% / 0.3);
-    --shadow-lg: 0 20px 25px -5px hsl(222 47% 2% / 0.1), 0 10px 10px -5px hsl(222 47% 2% / 0.04);
+    /* Enhanced Shadows and glows */
+    --shadow-glow: 0 0 30px hsl(var(--primary) / 0.4);
+    --shadow-glow-strong: 0 0 50px hsl(var(--primary) / 0.7);
+    --shadow-card: 0 15px 35px -5px hsl(250 20% 1% / 0.4);
+    --shadow-lg: 0 25px 40px -10px hsl(250 20% 1% / 0.2), 0 15px 15px -10px hsl(250 20% 1% / 0.1);
+    --shadow-cosmos: 0 0 40px hsl(var(--accent) / 0.3), 0 0 80px hsl(var(--primary) / 0.2);
 
     /* Animations */
     --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
@@ -129,7 +132,20 @@
 
   body {
     @apply bg-background text-foreground font-sans antialiased;
-    background: linear-gradient(135deg, hsl(var(--background)) 0%, hsl(222 47% 3%) 100%);
+    background: var(--gradient-cosmos);
+    background-attachment: fixed;
+  }
+
+  body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: var(--gradient-nebula);
+    pointer-events: none;
+    z-index: -1;
   }
 
   html {
@@ -138,15 +154,15 @@
 }
 
 @layer components {
-  /* Glowing effects */
+  /* Enhanced glowing effects */
   .glow-primary {
     box-shadow: var(--shadow-glow);
-    border: 1px solid hsl(var(--primary) / 0.3);
+    border: 1px solid hsl(var(--primary) / 0.4);
   }
 
   .glow-primary:hover {
     box-shadow: var(--shadow-glow-strong);
-    border-color: hsl(var(--primary) / 0.5);
+    border-color: hsl(var(--primary) / 0.7);
   }
 
   .glow-text {
@@ -154,6 +170,7 @@
     background-clip: text;
     -webkit-background-clip: text;
     color: transparent;
+    filter: drop-shadow(0 0 10px hsl(var(--primary) / 0.5));
   }
 
   /* 3D Card Effects */
@@ -168,10 +185,10 @@
 
   .card-3d:hover {
     transform: translateY(-8px) rotateX(5deg);
-    box-shadow: var(--shadow-lg), var(--shadow-glow);
+    box-shadow: var(--shadow-lg), var(--shadow-cosmos);
   }
 
-  /* Floating animations */
+  /* Enhanced floating animations */
   .float {
     animation: float 6s ease-in-out infinite;
   }
@@ -181,7 +198,7 @@
     animation-delay: -2s;
   }
 
-  /* Pulse glow animation */
+  /* Enhanced pulse glow animation */
   .pulse-glow {
     animation: pulse-glow 2s ease-in-out infinite;
   }
@@ -205,15 +222,15 @@
     -webkit-mask-composite: xor;
   }
 
-  /* Skill icons with glow */
+  /* Enhanced skill icons with stronger glow */
   .skill-icon {
     transition: var(--transition-smooth);
-    filter: drop-shadow(0 0 8px hsl(var(--primary) / 0.3));
+    filter: drop-shadow(0 0 12px hsl(var(--primary) / 0.5));
   }
 
   .skill-icon:hover {
-    transform: translateY(-4px) scale(1.1);
-    filter: drop-shadow(0 0 16px hsl(var(--primary) / 0.6));
+    transform: translateY(-4px) scale(1.15);
+    filter: drop-shadow(0 0 25px hsl(var(--primary) / 0.8)) drop-shadow(0 0 35px hsl(var(--accent) / 0.6));
   }
 }
 
@@ -224,6 +241,7 @@
     background-clip: text;
     -webkit-background-clip: text;
     color: transparent;
+    filter: drop-shadow(0 0 15px hsl(var(--primary) / 0.6));
   }
 
   .text-gradient-secondary {
@@ -231,6 +249,18 @@
     background-clip: text;
     -webkit-background-clip: text;
     color: transparent;
+    filter: drop-shadow(0 0 15px hsl(var(--secondary) / 0.6));
+  }
+
+  /* Global icon glow effects */
+  .lucide, [data-lucide], svg {
+    filter: drop-shadow(0 0 8px hsl(var(--primary) / 0.4));
+    transition: var(--transition-smooth);
+  }
+
+  .lucide:hover, [data-lucide]:hover, svg:hover {
+    filter: drop-shadow(0 0 15px hsl(var(--primary) / 0.7)) drop-shadow(0 0 25px hsl(var(--accent) / 0.5));
+    transform: scale(1.05);
   }
 }
 
@@ -246,9 +276,9 @@
 
 @keyframes pulse-glow {
   0%, 100% {
-    box-shadow: 0 0 20px hsl(var(--primary) / 0.3);
+    box-shadow: 0 0 30px hsl(var(--primary) / 0.4), 0 0 60px hsl(var(--accent) / 0.2);
   }
   50% {
-    box-shadow: 0 0 40px hsl(var(--primary) / 0.6);
+    box-shadow: 0 0 50px hsl(var(--primary) / 0.7), 0 0 80px hsl(var(--accent) / 0.4);
   }
 }
