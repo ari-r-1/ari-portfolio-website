@@ -1,26 +1,162 @@
 import { Button } from "@/components/ui/button";
-import { ArrowDown, Download } from "lucide-react";
-import heroBackground from "@/assets/hero-bg.jpg";
+import { ArrowDown, Download, Database, Network, Cpu, BarChart3 } from "lucide-react";
+import { useEffect, useRef } from "react";
 
 const Hero = () => {
+  const canvasRef = useRef<HTMLCanvasElement>(null);
+
+  useEffect(() => {
+    const canvas = canvasRef.current;
+    if (!canvas) return;
+
+    const ctx = canvas.getContext('2d');
+    if (!ctx) return;
+
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+
+    // Data visualization elements
+    const elements: Array<{
+      x: number;
+      y: number;
+      z: number;
+      vx: number;
+      vy: number;
+      vz: number;
+      type: 'sphere' | 'cube' | 'network';
+      size: number;
+      connections: number[];
+    }> = [];
+
+    // Create elements
+    for (let i = 0; i < 50; i++) {
+      elements.push({
+        x: Math.random() * canvas.width,
+        y: Math.random() * canvas.height,
+        z: Math.random() * 100,
+        vx: (Math.random() - 0.5) * 0.5,
+        vy: (Math.random() - 0.5) * 0.5,
+        vz: (Math.random() - 0.5) * 0.2,
+        type: ['sphere', 'cube', 'network'][Math.floor(Math.random() * 3)] as 'sphere' | 'cube' | 'network',
+        size: Math.random() * 4 + 2,
+        connections: []
+      });
+    }
+
+    // Create network connections
+    elements.forEach((el, i) => {
+      if (el.type === 'network') {
+        const nearbyElements = elements.filter((other, j) => {
+          if (i === j) return false;
+          const dist = Math.sqrt(
+            Math.pow(el.x - other.x, 2) + 
+            Math.pow(el.y - other.y, 2)
+          );
+          return dist < 150;
+        });
+        el.connections = nearbyElements.slice(0, 3).map(other => elements.indexOf(other));
+      }
+    });
+
+    const animate = () => {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+      elements.forEach((el, i) => {
+        // Update position
+        el.x += el.vx;
+        el.y += el.vy;
+        el.z += el.vz;
+
+        // Bounce off edges
+        if (el.x < 0 || el.x > canvas.width) el.vx *= -1;
+        if (el.y < 0 || el.y > canvas.height) el.vy *= -1;
+        if (el.z < 0 || el.z > 100) el.vz *= -1;
+
+        // 3D perspective
+        const scale = 1 + el.z / 100;
+        const opacity = 0.3 + (el.z / 100) * 0.7;
+
+        ctx.save();
+        ctx.globalAlpha = opacity;
+
+        if (el.type === 'sphere') {
+          // Draw glowing sphere
+          const gradient = ctx.createRadialGradient(el.x, el.y, 0, el.x, el.y, el.size * scale);
+          gradient.addColorStop(0, 'hsl(280, 100%, 70%)');
+          gradient.addColorStop(1, 'hsl(280, 100%, 30%)');
+          ctx.fillStyle = gradient;
+          ctx.beginPath();
+          ctx.arc(el.x, el.y, el.size * scale, 0, Math.PI * 2);
+          ctx.fill();
+        } else if (el.type === 'cube') {
+          // Draw glowing cube
+          ctx.fillStyle = `hsl(240, 100%, ${50 + el.z}%)`;
+          ctx.fillRect(
+            el.x - el.size * scale / 2, 
+            el.y - el.size * scale / 2, 
+            el.size * scale, 
+            el.size * scale
+          );
+        }
+
+        // Draw network connections
+        if (el.type === 'network' && el.connections.length > 0) {
+          ctx.strokeStyle = `hsl(260, 80%, 60%, ${opacity * 0.5})`;
+          ctx.lineWidth = 1;
+          el.connections.forEach(connIndex => {
+            const target = elements[connIndex];
+            if (target) {
+              ctx.beginPath();
+              ctx.moveTo(el.x, el.y);
+              ctx.lineTo(target.x, target.y);
+              ctx.stroke();
+            }
+          });
+        }
+
+        ctx.restore();
+      });
+
+      requestAnimationFrame(animate);
+    };
+
+    animate();
+
+    const handleResize = () => {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    };
+
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
   const scrollToAbout = () => {
     document.getElementById('about')?.scrollIntoView({ behavior: 'smooth' });
   };
 
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-      {/* Background with overlay */}
-      <div 
-        className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-        style={{ backgroundImage: `url(${heroBackground})` }}
+      {/* 3D Canvas Background */}
+      <canvas 
+        ref={canvasRef}
+        className="absolute inset-0 pointer-events-none"
+        style={{ background: 'linear-gradient(135deg, hsl(280, 40%, 5%) 0%, hsl(240, 60%, 10%) 50%, hsl(260, 50%, 8%) 100%)' }}
       />
-      <div className="absolute inset-0 bg-background/80 backdrop-blur-[1px]" />
       
-      {/* Floating cosmic elements */}
-      <div className="absolute top-20 left-10 w-4 h-4 bg-primary rounded-full float opacity-80 pulse-glow" />
-      <div className="absolute top-40 right-20 w-6 h-6 bg-secondary rounded-full float-delay opacity-60 pulse-glow" />
-      <div className="absolute bottom-32 left-20 w-3 h-3 bg-accent rounded-full float opacity-70 pulse-glow" />
-      <div className="absolute bottom-20 right-10 w-5 h-5 bg-primary/70 rounded-full float-delay pulse-glow" />
+      {/* Floating 3D Data Icons */}
+      <div className="absolute top-20 left-10 animate-float">
+        <Database className="w-8 h-8 text-primary glow-icon opacity-80" />
+      </div>
+      <div className="absolute top-40 right-20 animate-float" style={{ animationDelay: '1s' }}>
+        <Network className="w-10 h-10 text-secondary glow-icon opacity-60" />
+      </div>
+      <div className="absolute bottom-32 left-20 animate-float" style={{ animationDelay: '2s' }}>
+        <Cpu className="w-6 h-6 text-accent glow-icon opacity-70" />
+      </div>
+      <div className="absolute bottom-20 right-10 animate-float" style={{ animationDelay: '0.5s' }}>
+        <BarChart3 className="w-8 h-8 text-primary glow-icon opacity-75" />
+      </div>
 
       {/* Main content */}
       <div className="relative z-10 text-center px-4 max-w-4xl mx-auto">
