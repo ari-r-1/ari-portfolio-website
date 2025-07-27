@@ -68,7 +68,22 @@ export default {
 					'accent-foreground': 'hsl(var(--sidebar-accent-foreground))',
 					border: 'hsl(var(--sidebar-border))',
 					ring: 'hsl(var(--sidebar-ring))'
+				},
+				glass: {
+					DEFAULT: 'rgba(255, 255, 255, 0.1)',
+					dark: 'rgba(0, 0, 0, 0.2)',
+					strong: 'rgba(255, 255, 255, 0.15)',
+					border: 'rgba(255, 255, 255, 0.2)'
 				}
+			},
+			backdropBlur: {
+				xs: '2px',
+				sm: '4px',
+				md: '8px',
+				lg: '12px',
+				xl: '16px',
+				'2xl': '24px',
+				'3xl': '40px'
 			},
 			borderRadius: {
 				lg: 'var(--radius)',

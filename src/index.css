@@ -10,11 +10,11 @@
     --background: 250 20% 3%;
     --foreground: 280 15% 95%;
 
-    /* Card and surface colors */
-    --card: 255 25% 6%;
+    /* Glass card and surface colors */
+    --card: 255 25% 6% / 0.2;
     --card-foreground: 280 15% 95%;
 
-    --popover: 255 25% 6%;
+    --popover: 255 25% 6% / 0.8;
     --popover-foreground: 280 15% 95%;
 
     /* Primary - Deep Purple */
@@ -27,8 +27,8 @@
     --secondary-foreground: 250 20% 3%;
     --secondary-glow: 250 100% 75%;
 
-    /* Muted colors */
-    --muted: 250 30% 12%;
+    /* Muted colors with transparency */
+    --muted: 250 30% 12% / 0.5;
     --muted-foreground: 270 15% 70%;
 
     /* Accent - Bright Purple */
@@ -43,25 +43,27 @@
     --success: 142 71% 45%;
     --success-foreground: 280 15% 95%;
 
-    /* UI elements */
-    --border: 250 30% 15%;
-    --input: 250 30% 15%;
+    /* Glass UI elements */
+    --border: 250 30% 15% / 0.3;
+    --input: 250 30% 15% / 0.4;
     --ring: 270 85% 60%;
 
-    /* Cosmos Gradients */
+    /* Glass Cosmos Gradients */
     --gradient-primary: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--accent)));
     --gradient-glow: linear-gradient(135deg, hsl(var(--primary-glow)), hsl(var(--secondary-glow)));
-    --gradient-card: linear-gradient(145deg, hsl(var(--card)) 0%, hsl(250 35% 8%) 100%);
+    --gradient-card: linear-gradient(145deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0.05) 100%);
     --gradient-text: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--secondary)));
     --gradient-cosmos: linear-gradient(135deg, hsl(270 85% 20%) 0%, hsl(250 90% 15%) 25%, hsl(290 80% 25%) 50%, hsl(240 85% 20%) 75%, hsl(260 90% 10%) 100%);
     --gradient-nebula: radial-gradient(ellipse at center, hsl(270 85% 30% / 0.3) 0%, hsl(250 90% 20% / 0.2) 30%, transparent 70%);
+    --gradient-glass: linear-gradient(135deg, rgba(255,255,255,0.1), rgba(255,255,255,0.05));
 
-    /* Enhanced Shadows and glows */
+    /* Glass Enhanced Shadows and glows */
     --shadow-glow: 0 0 30px hsl(var(--primary) / 0.4);
     --shadow-glow-strong: 0 0 50px hsl(var(--primary) / 0.7);
     --shadow-card: 0 15px 35px -5px hsl(250 20% 1% / 0.4);
     --shadow-lg: 0 25px 40px -10px hsl(250 20% 1% / 0.2), 0 15px 15px -10px hsl(250 20% 1% / 0.1);
     --shadow-cosmos: 0 0 40px hsl(var(--accent) / 0.3), 0 0 80px hsl(var(--primary) / 0.2);
+    --shadow-glass: 0 8px 32px rgba(0, 0, 0, 0.3);
 
     /* Animations */
     --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
@@ -128,6 +130,25 @@
 @layer base {
   * {
     @apply border-border;
+  }
+
+  /* Glass morphism utilities */
+  .glass {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+  }
+
+  .glass-dark {
+    background: rgba(0, 0, 0, 0.2);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  .glass-strong {
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(15px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
   }
 
   body {
