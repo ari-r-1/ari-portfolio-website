@@ -7,11 +7,9 @@ import { Badge } from "@/components/ui/badge";
 import { 
   Send, 
   Mail, 
-  Phone, 
   MapPin, 
   Linkedin, 
-  Github, 
-  Twitter,
+  Github,
   Download,
   FileText
 } from "lucide-react";
@@ -44,10 +42,20 @@ const Contact = () => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // Here you would typically send the form data to your backend
+    // Create mailto link with form data
+    const subject = encodeURIComponent(`Message from ${formData.name}`);
+    const body = encodeURIComponent(`
+Name: ${formData.name}
+Email: ${formData.email}
+
+Message:
+${formData.message}
+    `);
+    window.open(`mailto:ariranalyst@gmail.com?subject=${subject}&body=${body}`);
+    
     toast({
-      title: "Message Sent!",
-      description: "Thank you for your message. I'll get back to you soon!",
+      title: "Email Client Opened!",
+      description: "Your email client has been opened with the message details.",
     });
     setFormData({ name: '', email: '', message: '' });
   };
@@ -63,20 +71,20 @@ const Contact = () => {
     {
       name: "LinkedIn",
       icon: Linkedin,
-      url: "https://linkedin.com/in/arir-datascientist",
+      url: "https://www.linkedin.com/in/r-ari/",
       color: "text-blue-500"
     },
     {
       name: "GitHub",
       icon: Github,
-      url: "https://github.com/arir",
+      url: "https://github.com/ari-r-1",
       color: "text-gray-400"
     },
     {
-      name: "Twitter",
-      icon: Twitter,
-      url: "https://twitter.com/arir_ds",
-      color: "text-sky-400"
+      name: "Email",
+      icon: Mail,
+      url: "mailto:ariranalyst@gmail.com",
+      color: "text-primary"
     }
   ];
 
@@ -104,18 +112,8 @@ const Contact = () => {
                       <Mail className="w-5 h-5 text-primary" />
                     </div>
                     <div>
-                      <p className="font-medium">Email</p>
-                      <p className="text-muted-foreground">ari.r.datascientist@email.com</p>
-                    </div>
-                  </div>
-
-                  <div className="flex items-center gap-4 p-3 rounded-lg hover:bg-muted/50 transition-colors">
-                    <div className="p-2 bg-secondary/10 rounded-lg skill-icon pulse-glow">
-                      <Phone className="w-5 h-5 text-secondary" />
-                    </div>
-                    <div>
-                      <p className="font-medium">Phone</p>
-                      <p className="text-muted-foreground">+1 (555) 123-4567</p>
+                      <p className="font-medium">Ari R.</p>
+                      <p className="text-muted-foreground">ariranalyst@gmail.com</p>
                     </div>
                   </div>
 

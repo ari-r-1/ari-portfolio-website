@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button";
-import { ArrowDown, Download, Database, Network, Cpu, BarChart3 } from "lucide-react";
+import { ArrowDown, Download, Database, Network, Cpu, BarChart3, Github, Linkedin, Mail } from "lucide-react";
 import { useEffect, useRef } from "react";
 
 const Hero = () => {
@@ -164,7 +164,7 @@ const Hero = () => {
           <h1 className="text-5xl md:text-7xl font-bold mb-6 tracking-tight">
             <span className="block text-gradient mb-2">Ari R</span>
             <span className="text-2xl md:text-3xl font-normal text-muted-foreground">
-              Certified Data Scientist | ML Enthusiast | Future Quant
+              Certified Data Scientist
             </span>
           </h1>
         </div>
@@ -188,9 +188,32 @@ const Hero = () => {
             Explore My Work
             <ArrowDown className="w-5 h-5 group-hover:translate-y-1 transition-transform" />
           </Button>
-          <Button variant="glass" size="xl">
-            <Download className="w-5 h-5" />
-            Download Resume
+          <Button 
+            variant="glass" 
+            size="xl"
+            onClick={() => window.open('https://github.com/ari-r-1', '_blank')}
+            className="group"
+          >
+            <Github className="w-5 h-5 group-hover:rotate-12 transition-transform" />
+            GitHub
+          </Button>
+          <Button 
+            variant="glass" 
+            size="xl"
+            onClick={() => window.open('https://www.linkedin.com/in/r-ari/', '_blank')}
+            className="group"
+          >
+            <Linkedin className="w-5 h-5 group-hover:scale-110 transition-transform" />
+            LinkedIn
+          </Button>
+          <Button 
+            variant="glass" 
+            size="xl"
+            onClick={() => window.open('mailto:ariranalyst@gmail.com')}
+            className="group"
+          >
+            <Mail className="w-5 h-5 group-hover:scale-110 transition-transform" />
+            Email
           </Button>
         </div>
       </div>

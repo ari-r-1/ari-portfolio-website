@@ -1,15 +1,17 @@
 import { useEffect, useState } from "react";
 import { Card } from "@/components/ui/card";
-import { Progress } from "@/components/ui/progress";
+import { Badge } from "@/components/ui/badge";
 import { 
-  Calculator, 
   Code, 
   Database, 
   BarChart3, 
   Brain, 
   Wrench, 
   HardDrive, 
-  Cloud 
+  Cloud,
+  FileText,
+  Search,
+  TrendingUp
 } from "lucide-react";
 
 const Skills = () => {
@@ -33,99 +35,114 @@ const Skills = () => {
 
   const skillCategories = [
     {
-      title: "Mathematics & Statistics",
-      icon: Calculator,
+      title: "Programming & Scripting",
+      icon: Code,
       color: "text-primary",
       bgColor: "bg-primary/10",
       skills: [
-        { name: "Probability Theory", level: 85 },
-        { name: "Statistics", level: 90 },
-        { name: "Linear Algebra", level: 80 },
-        { name: "Hypothesis Testing", level: 85 },
+        "Python (Pandas, NumPy, NLTK, Scikit-learn)",
+        "SQL (data querying and joins)",
+        "Regular Expressions (Regex)",
+        "Bash (basic)"
       ]
     },
     {
-      title: "Programming Languages",
-      icon: Code,
+      title: "Data Handling & Analysis",
+      icon: Database,
       color: "text-secondary",
       bgColor: "bg-secondary/10",
       skills: [
-        { name: "Python", level: 95 },
-        { name: "R", level: 75 },
-        { name: "SQL", level: 85 },
-        { name: "Bash/Shell", level: 70 },
-      ]
-    },
-    {
-      title: "Data Manipulation",
-      icon: Database,
-      color: "text-accent",
-      bgColor: "bg-accent/10",
-      skills: [
-        { name: "Pandas", level: 90 },
-        { name: "NumPy", level: 90 },
-        { name: "EDA", level: 85 },
-        { name: "Excel", level: 80 },
+        "Pandas",
+        "NumPy",
+        "Data Cleaning & Wrangling", 
+        "Exploratory Data Analysis (EDA)",
+        "Data preprocessing & cleaning",
+        "Feature Engineering"
       ]
     },
     {
       title: "Data Visualization",
       icon: BarChart3,
-      color: "text-primary",
-      bgColor: "bg-primary/10",
+      color: "text-accent",
+      bgColor: "bg-accent/10",
       skills: [
-        { name: "Matplotlib/Seaborn", level: 85 },
-        { name: "Power BI", level: 80 },
-        { name: "Tableau", level: 75 },
-        { name: "Plotly", level: 70 },
+        "Matplotlib, Seaborn for visualization",
+        "Excel (formulas, pivot tables, charts)",
+        "Tableau / Power BI",
+        "Plotly"
       ]
     },
     {
       title: "Machine Learning & AI",
       icon: Brain,
+      color: "text-primary",
+      bgColor: "bg-primary/10",
+      skills: [
+        "Supervised Learning: Linear Regression, Logistic Regression, etc..",
+        "Unsupervised Learning: K-Means, Hierarchical Clustering, etc..",
+        "Model Evaluation: Accuracy, Confusion Matrix, F1 Score",
+        "Scikit-learn pipeline design",
+        "TensorFlow / Keras (basic)"
+      ]
+    },
+    {
+      title: "Natural Language Processing",
+      icon: FileText,
       color: "text-secondary",
       bgColor: "bg-secondary/10",
       skills: [
-        { name: "Scikit-learn", level: 90 },
-        { name: "TensorFlow", level: 80 },
-        { name: "Model Evaluation", level: 85 },
-        { name: "Deep Learning", level: 75 },
+        "Text preprocessing (tokenization, stopword removal, stemming)",
+        "Sentiment analysis using NLTK",
+        "Feature extraction (Bag-of-Words, TF-IDF)",
+        "Readability scoring (e.g., FOG Index)"
+      ]
+    },
+    {
+      title: "Web Scraping & Data Extraction",
+      icon: Search,
+      color: "text-accent",
+      bgColor: "bg-accent/10",
+      skills: [
+        "Web scraping using BeautifulSoup and Requests",
+        "Data Extraction from various sources",
+        "API Integration",
+        "Automated data collection"
       ]
     },
     {
       title: "Tools & Platforms",
       icon: Wrench,
-      color: "text-accent",
-      bgColor: "bg-accent/10",
+      color: "text-primary",
+      bgColor: "bg-primary/10",
       skills: [
-        { name: "Jupyter/Colab", level: 95 },
-        { name: "Git/GitHub", level: 85 },
-        { name: "VS Code", level: 90 },
-        { name: "Docker", level: 65 },
+        "Jupyter Notebook / Google Colab",
+        "Git & GitHub",
+        "Excel (Advanced Functions & Pivot Tables)",
+        "VS Code / PyCharm"
       ]
     },
     {
       title: "Databases",
       icon: HardDrive,
-      color: "text-primary",
-      bgColor: "bg-primary/10",
-      skills: [
-        { name: "MySQL", level: 80 },
-        { name: "PostgreSQL", level: 75 },
-        { name: "SQLite", level: 85 },
-        { name: "MongoDB", level: 60 },
-      ]
-    },
-    {
-      title: "Cloud & Deployment",
-      icon: Cloud,
       color: "text-secondary",
       bgColor: "bg-secondary/10",
       skills: [
-        { name: "AWS", level: 70 },
-        { name: "Streamlit", level: 80 },
-        { name: "Flask", level: 75 },
-        { name: "Heroku", level: 70 },
+        "MySQL",
+        "PostgreSQL",
+        "SQLite",
+        "MongoDB (basic)"
+      ]
+    },
+    {
+      title: "Cloud & Big Data",
+      icon: Cloud,
+      color: "text-accent",
+      bgColor: "bg-accent/10",
+      skills: [
+        "AWS (S3, Lambda)",
+        "Google Cloud Platform (BigQuery)",
+        "Apache Spark (Intro-level)",
+        "Flask deployment"
       ]
     }
   ];
@@ -137,12 +154,15 @@ const Skills = () => {
           <h2 className="text-4xl md:text-5xl font-bold text-center mb-4">
             <span className="text-gradient">Technical Skills</span>
           </h2>
+          <p className="text-center text-muted-foreground mb-4">
+            Junior Data Scientist
+          </p>
           <p className="text-center text-muted-foreground mb-16 max-w-2xl mx-auto">
-            A comprehensive overview of my technical expertise across data science, 
-            machine learning, and software development domains.
+            Comprehensive technical expertise across data science, machine learning, 
+            and software development domains with hands-on project experience.
           </p>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {skillCategories.map((category, categoryIndex) => (
               <Card 
                 key={category.title} 
@@ -153,25 +173,21 @@ const Skills = () => {
                   <div className={`p-2 ${category.bgColor} rounded-lg skill-icon`}>
                     <category.icon className={`w-6 h-6 ${category.color}`} />
                   </div>
-                  <h3 className="font-semibold text-lg">{category.title}</h3>
+                  <h3 className="font-semibold text-lg text-gradient">{category.title}</h3>
                 </div>
 
-                <div className="space-y-4">
+                <div className="space-y-3">
                   {category.skills.map((skill, skillIndex) => (
-                    <div key={skill.name} className="space-y-2">
-                      <div className="flex justify-between text-sm">
-                        <span className="font-medium">{skill.name}</span>
-                        <span className="text-muted-foreground">{skill.level}%</span>
-                      </div>
-                      <Progress 
-                        value={isVisible ? skill.level : 0} 
-                        className="h-2"
-                        style={{ 
-                          transitionDelay: `${(categoryIndex * 0.1) + (skillIndex * 0.05)}s`,
-                          transition: 'all 1s ease-out'
-                        }}
-                      />
-                    </div>
+                    <Badge 
+                      key={skill}
+                      variant="outline" 
+                      className="w-full justify-start text-left p-3 hover:bg-primary/10 transition-colors text-xs leading-relaxed"
+                      style={{ 
+                        animationDelay: `${(categoryIndex * 0.1) + (skillIndex * 0.05)}s`,
+                      }}
+                    >
+                      {skill}
+                    </Badge>
                   ))}
                 </div>
               </Card>

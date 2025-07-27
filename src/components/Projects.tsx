@@ -25,44 +25,32 @@ const Projects = () => {
 
   const projects = [
     {
-      title: "Healthcare Analytics Dashboard",
-      description: "Built an interactive dashboard for analyzing patient data and treatment outcomes using machine learning models. Implemented predictive analytics for early disease detection and resource optimization.",
-      technologies: ["Python", "Pandas", "Scikit-learn", "Plotly", "Streamlit", "SQL"],
-      github: "https://github.com/arir/healthcare-analytics",
-      demo: "#",
-      category: "Healthcare AI"
+      title: "Currency Converter Web App",
+      description: "Built a responsive currency converter web application using Flask framework. Features real-time exchange rates, historical data visualization, and support for multiple currencies with an intuitive user interface.",
+      technologies: ["Python", "Flask", "HTML/CSS", "JavaScript", "API Integration", "Bootstrap"],
+      github: "https://github.com/ari-r-1/currency-converter-flask-based",
+      category: "Web Development"
     },
     {
-      title: "Financial Risk Assessment Model",
-      description: "Developed a comprehensive risk assessment model for loan default prediction using ensemble methods. Achieved 94% accuracy with XGBoost and implemented SHAP for model interpretability.",
-      technologies: ["Python", "XGBoost", "SHAP", "Pandas", "Matplotlib", "Flask"],
-      github: "https://github.com/arir/risk-assessment",
-      demo: "#",
-      category: "FinTech"
+      title: "Email Duplicate Cleaner Web App",
+      description: "Developed a web application to identify and remove duplicate emails from large datasets. Implemented advanced algorithms for email similarity detection and provided batch processing capabilities.",
+      technologies: ["Python", "Flask", "Pandas", "HTML/CSS", "JavaScript", "Data Processing"],
+      github: "https://github.com/ari-r-1/email-duplicate-cleaner",
+      category: "Data Processing"
     },
     {
-      title: "Climate Data Analysis Platform",
-      description: "Created an end-to-end platform for climate data analysis and visualization. Processed large datasets from NASA and NOAA to identify climate patterns and predict temperature trends.",
-      technologies: ["Python", "TensorFlow", "Pandas", "Seaborn", "Jupyter", "AWS"],
-      github: "https://github.com/arir/climate-analysis",
-      demo: "#",
-      category: "Environmental"
+      title: "Chronic Kidney Disease Prediction (CKDP)",
+      description: "End-to-End Machine Learning project for predicting chronic kidney disease using patient medical data. Implemented multiple ML algorithms with comprehensive evaluation metrics and model interpretability.",
+      technologies: ["Python", "Scikit-learn", "Pandas", "NumPy", "Matplotlib", "Seaborn", "Jupyter"],
+      github: "https://github.com/ari-r-1/ckd-prediction",
+      category: "Healthcare ML"
     },
     {
-      title: "Customer Segmentation & Analytics",
-      description: "Implemented unsupervised learning algorithms for customer segmentation in e-commerce. Used K-means clustering and RFM analysis to improve marketing strategies and increase conversion rates.",
-      technologies: ["Python", "Scikit-learn", "Pandas", "Plotly", "PowerBI"],
-      github: "https://github.com/arir/customer-segmentation",
-      demo: "#",
-      category: "E-commerce"
-    },
-    {
-      title: "Real-time Stock Price Predictor",
-      description: "Built a real-time stock price prediction system using LSTM neural networks and technical indicators. Integrated with financial APIs for live data streaming and automated trading signals.",
-      technologies: ["Python", "TensorFlow", "Alpha Vantage API", "Streamlit", "NumPy"],
-      github: "https://github.com/arir/stock-predictor",
-      demo: "#",
-      category: "Quantitative Finance"
+      title: "Data Extraction And NLP Text Analysis",
+      description: "Comprehensive NLP project for extracting insights from text data using natural language processing techniques. Features sentiment analysis, topic modeling, and text classification with visualization dashboards.",
+      technologies: ["Python", "NLTK", "SpaCy", "Scikit-learn", "Matplotlib", "Text Processing", "NLP"],
+      github: "https://github.com/ari-r-1/data-extraction-and-NLP-text-analysis-",
+      category: "Natural Language Processing"
     }
   ];
 
@@ -74,11 +62,11 @@ const Projects = () => {
             <span className="text-gradient">Featured Projects</span>
           </h2>
           <p className="text-center text-muted-foreground mb-16 max-w-2xl mx-auto">
-            A showcase of my data science projects demonstrating end-to-end solutions 
-            across various domains including healthcare, finance, and sustainability.
+            A showcase of my data science and web development projects demonstrating end-to-end solutions 
+            across various domains including healthcare, NLP, and data processing.
           </p>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid md:grid-cols-2 gap-8">
             {projects.map((project, index) => (
               <Card 
                 key={project.title}
@@ -123,16 +111,7 @@ const Projects = () => {
                       onClick={() => window.open(project.github, '_blank')}
                     >
                       <Github className="w-4 h-4 group-hover/btn:rotate-12 transition-transform" />
-                      Code
-                    </Button>
-                    <Button 
-                      variant="glass" 
-                      size="sm" 
-                      className="flex-1 group/btn"
-                      onClick={() => window.open(project.demo, '_blank')}
-                    >
-                      <ExternalLink className="w-4 h-4 group-hover/btn:translate-x-1 transition-transform" />
-                      Demo
+                      GitHub
                     </Button>
                   </div>
                 </div>
@@ -148,7 +127,7 @@ const Projects = () => {
             <Button 
               variant="hero" 
               size="lg"
-              onClick={() => window.open('https://github.com/arir', '_blank')}
+              onClick={() => window.open('https://github.com/ari-r-1', '_blank')}
               className="group"
             >
               View All Projects on GitHub
