@@ -80,17 +80,17 @@ const Hero = () => {
         ctx.globalAlpha = opacity;
 
         if (el.type === 'sphere') {
-          // Draw glowing sphere
+          // Draw cosmic green sphere
           const gradient = ctx.createRadialGradient(el.x, el.y, 0, el.x, el.y, el.size * scale);
-          gradient.addColorStop(0, 'hsl(280, 100%, 70%)');
-          gradient.addColorStop(1, 'hsl(280, 100%, 30%)');
+          gradient.addColorStop(0, 'hsl(140, 65%, 60%)');
+          gradient.addColorStop(1, 'hsl(140, 65%, 30%)');
           ctx.fillStyle = gradient;
           ctx.beginPath();
           ctx.arc(el.x, el.y, el.size * scale, 0, Math.PI * 2);
           ctx.fill();
         } else if (el.type === 'cube') {
-          // Draw glowing cube
-          ctx.fillStyle = `hsl(240, 100%, ${50 + el.z}%)`;
+          // Draw cosmic purple cube
+          ctx.fillStyle = `hsl(280, 70%, ${40 + el.z / 2}%)`;
           ctx.fillRect(
             el.x - el.size * scale / 2, 
             el.y - el.size * scale / 2, 
@@ -101,8 +101,8 @@ const Hero = () => {
 
         // Draw network connections
         if (el.type === 'network' && el.connections.length > 0) {
-          ctx.strokeStyle = `hsl(260, 80%, 60%, ${opacity * 0.5})`;
-          ctx.lineWidth = 1;
+          ctx.strokeStyle = `hsl(180, 70%, 50%, ${opacity * 0.6})`;
+          ctx.lineWidth = 1.5;
           el.connections.forEach(connIndex => {
             const target = elements[connIndex];
             if (target) {
@@ -141,7 +141,7 @@ const Hero = () => {
       <canvas 
         ref={canvasRef}
         className="absolute inset-0 pointer-events-none"
-        style={{ background: 'linear-gradient(135deg, hsl(280, 40%, 5%) 0%, hsl(240, 60%, 10%) 50%, hsl(260, 50%, 8%) 100%)' }}
+        style={{ background: 'var(--gradient-hero)' }}
       />
       
       {/* Floating 3D Data Icons */}
