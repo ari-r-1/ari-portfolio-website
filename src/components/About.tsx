@@ -42,23 +42,9 @@ const About = () => {
             Passionate about turning data into meaningful insights and actionable strategies
           </p>
 
-          <div className="grid lg:grid-cols-3 gap-8">
-            {/* Profile Photo */}
-            <div className="lg:col-span-1 flex justify-center">
-              <div className="relative group">
-                <div className="w-80 h-96 rounded-2xl overflow-hidden card-3d">
-                  <img 
-                    src={profilePhoto} 
-                    alt="Ari R - Data Scientist" 
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                  />
-                </div>
-                <div className="absolute inset-0 rounded-2xl bg-gradient-to-t from-primary/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-              </div>
-            </div>
-
+          <div className="grid lg:grid-cols-1 gap-8">
             {/* Content */}
-            <div className="lg:col-span-2 space-y-8">
+            <div className="space-y-8">
               {/* Professional Summary */}
               <Card className="card-3d p-6">
                 <div className="flex items-center gap-3 mb-4">
