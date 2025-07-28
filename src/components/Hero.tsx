@@ -1,148 +1,24 @@
 import { Button } from "@/components/ui/button";
-import { ArrowDown, Download, Database, Network, Cpu, BarChart3, Github, Linkedin, Mail } from "lucide-react";
-import { useEffect, useRef } from "react";
+import { ArrowDown, Database, Network, Cpu, BarChart3, Github, Linkedin, Mail } from "lucide-react";
+import futuristicBg from "@/assets/futuristic-bg.jpg";
 
 const Hero = () => {
-  const canvasRef = useRef<HTMLCanvasElement>(null);
-
-  useEffect(() => {
-    const canvas = canvasRef.current;
-    if (!canvas) return;
-
-    const ctx = canvas.getContext('2d');
-    if (!ctx) return;
-
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
-
-    // Data visualization elements
-    const elements: Array<{
-      x: number;
-      y: number;
-      z: number;
-      vx: number;
-      vy: number;
-      vz: number;
-      type: 'sphere' | 'cube' | 'network';
-      size: number;
-      connections: number[];
-    }> = [];
-
-    // Create elements
-    for (let i = 0; i < 50; i++) {
-      elements.push({
-        x: Math.random() * canvas.width,
-        y: Math.random() * canvas.height,
-        z: Math.random() * 100,
-        vx: (Math.random() - 0.5) * 0.5,
-        vy: (Math.random() - 0.5) * 0.5,
-        vz: (Math.random() - 0.5) * 0.2,
-        type: ['sphere', 'cube', 'network'][Math.floor(Math.random() * 3)] as 'sphere' | 'cube' | 'network',
-        size: Math.random() * 4 + 2,
-        connections: []
-      });
-    }
-
-    // Create network connections
-    elements.forEach((el, i) => {
-      if (el.type === 'network') {
-        const nearbyElements = elements.filter((other, j) => {
-          if (i === j) return false;
-          const dist = Math.sqrt(
-            Math.pow(el.x - other.x, 2) + 
-            Math.pow(el.y - other.y, 2)
-          );
-          return dist < 150;
-        });
-        el.connections = nearbyElements.slice(0, 3).map(other => elements.indexOf(other));
-      }
-    });
-
-    const animate = () => {
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-      elements.forEach((el, i) => {
-        // Update position
-        el.x += el.vx;
-        el.y += el.vy;
-        el.z += el.vz;
-
-        // Bounce off edges
-        if (el.x < 0 || el.x > canvas.width) el.vx *= -1;
-        if (el.y < 0 || el.y > canvas.height) el.vy *= -1;
-        if (el.z < 0 || el.z > 100) el.vz *= -1;
-
-        // 3D perspective
-        const scale = 1 + el.z / 100;
-        const opacity = 0.3 + (el.z / 100) * 0.7;
-
-        ctx.save();
-        ctx.globalAlpha = opacity;
-
-        if (el.type === 'sphere') {
-          // Draw cosmic green sphere
-          const gradient = ctx.createRadialGradient(el.x, el.y, 0, el.x, el.y, el.size * scale);
-          gradient.addColorStop(0, 'hsl(140, 65%, 60%)');
-          gradient.addColorStop(1, 'hsl(140, 65%, 30%)');
-          ctx.fillStyle = gradient;
-          ctx.beginPath();
-          ctx.arc(el.x, el.y, el.size * scale, 0, Math.PI * 2);
-          ctx.fill();
-        } else if (el.type === 'cube') {
-          // Draw cosmic purple cube
-          ctx.fillStyle = `hsl(280, 70%, ${40 + el.z / 2}%)`;
-          ctx.fillRect(
-            el.x - el.size * scale / 2, 
-            el.y - el.size * scale / 2, 
-            el.size * scale, 
-            el.size * scale
-          );
-        }
-
-        // Draw network connections
-        if (el.type === 'network' && el.connections.length > 0) {
-          ctx.strokeStyle = `hsl(180, 70%, 50%, ${opacity * 0.6})`;
-          ctx.lineWidth = 1.5;
-          el.connections.forEach(connIndex => {
-            const target = elements[connIndex];
-            if (target) {
-              ctx.beginPath();
-              ctx.moveTo(el.x, el.y);
-              ctx.lineTo(target.x, target.y);
-              ctx.stroke();
-            }
-          });
-        }
-
-        ctx.restore();
-      });
-
-      requestAnimationFrame(animate);
-    };
-
-    animate();
-
-    const handleResize = () => {
-      canvas.width = window.innerWidth;
-      canvas.height = window.innerHeight;
-    };
-
-    window.addEventListener('resize', handleResize);
-    return () => window.removeEventListener('resize', handleResize);
-  }, []);
-
   const scrollToAbout = () => {
     document.getElementById('about')?.scrollIntoView({ behavior: 'smooth' });
   };
 
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-      {/* 3D Canvas Background */}
-      <canvas 
-        ref={canvasRef}
-        className="absolute inset-0 pointer-events-none"
-        style={{ background: 'var(--gradient-hero)' }}
+      {/* Futuristic Digital Background */}
+      <div 
+        className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+        style={{ 
+          backgroundImage: `url(${futuristicBg})`,
+          backgroundBlendMode: 'overlay',
+          backgroundColor: 'var(--background-light)'
+        }}
       />
+      <div className="absolute inset-0 bg-gradient-to-br from-background/80 via-background/60 to-background/40" />
       
       {/* Floating 3D Data Icons */}
       <div className="absolute top-20 left-10 animate-float">
