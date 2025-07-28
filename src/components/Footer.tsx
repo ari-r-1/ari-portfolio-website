@@ -40,8 +40,7 @@ const Footer = () => {
           <div className="space-y-4">
             <h4 className="font-semibold">Let's Connect</h4>
             <div className="space-y-2 text-muted-foreground">
-              <p>ari.r.datascientist@email.com</p>
-              <p>+1 (555) 123-4567</p>
+              <p>ariranalyst@gmail.com</p>
               <p>Available for Remote Work</p>
             </div>
           </div>
