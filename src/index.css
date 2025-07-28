@@ -6,16 +6,16 @@
 
 @layer base {
   :root {
-    /* Light cosmos theme base colors */
+    /* Light cosmos theme base colors - Darker text */
     --background: 210 40% 98%;
-    --foreground: 220 15% 15%;
+    --foreground: 220 25% 8%;
 
-    /* Glass card and surface colors */
+    /* Glass card and surface colors - Darker text */
     --card: 220 20% 95% / 0.3;
-    --card-foreground: 220 15% 15%;
+    --card-foreground: 220 25% 8%;
 
     --popover: 220 20% 95% / 0.9;
-    --popover-foreground: 220 15% 15%;
+    --popover-foreground: 220 25% 8%;
 
     /* Primary - Cosmic Purple */
     --primary: 280 70% 55%;
@@ -27,9 +27,9 @@
     --secondary-foreground: 210 40% 98%;
     --secondary-glow: 140 65% 60%;
 
-    /* Muted colors with transparency */
+    /* Muted colors with transparency - Darker text */
     --muted: 220 15% 85% / 0.6;
-    --muted-foreground: 220 15% 45%;
+    --muted-foreground: 220 25% 25%;
 
     /* Accent - Electric Teal */
     --accent: 180 70% 55%;
