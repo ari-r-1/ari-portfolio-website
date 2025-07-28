@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { ArrowDown, Database, Network, Cpu, BarChart3, Github, Linkedin, Mail } from "lucide-react";
-import futuristicBg from "@/assets/futuristic-bg.jpg";
+import futuristicBg from "@/assets/futuristic-bg-dark.jpg";
 
 const Hero = () => {
   const scrollToAbout = () => {
