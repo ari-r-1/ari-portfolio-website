@@ -32,7 +32,7 @@ const Education = () => {
       type: "Undergraduate"
     },
     {
-      degree: "12th Grade",
+      degree: "HSC(12th)",
       school: "Government Boys Higher Secondary School",
       grade: "93.5%",
       period: "2016 – 2017",
