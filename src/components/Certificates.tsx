@@ -25,7 +25,7 @@ const Certificates = () => {
   const certificates = [
     {
       title: "Certified Data Scientist",
-      issuer: "Professional Certification Board",
+      issuer: "Data Mites",
       description: "Comprehensive certification covering statistical analysis, machine learning, and data visualization",
       category: "Data Science",
       color: "text-primary"
