@@ -47,15 +47,15 @@ const Hero = () => {
         <div className="backdrop-blur-xl bg-white/5 border border-white/10 rounded-3xl p-12 shadow-2xl">
           <div className="animate-slide-up">
             <h1 className="text-5xl md:text-7xl font-bold mb-6 tracking-tight">
-              <span className="block text-white mb-2 filter drop-shadow-xl font-bold">Ari R</span>
-              <span className="text-2xl md:text-3xl font-bold text-white/80 filter drop-shadow-lg">
+              <span className="block text-black mb-2 filter drop-shadow-xl font-bold">Ari R</span>
+              <span className="text-2xl md:text-3xl font-bold text-black/80 filter drop-shadow-lg">
                 Certified Data Scientist
               </span>
             </h1>
           </div>
 
           <div className="animate-slide-up" style={{ animationDelay: '0.2s' }}>
-            <p className="text-lg md:text-xl text-white/70 mb-8 max-w-2xl mx-auto leading-relaxed filter drop-shadow-md font-bold">
+            <p className="text-lg md:text-xl text-black/70 mb-8 max-w-2xl mx-auto leading-relaxed filter drop-shadow-md font-bold">
               Hi, I'm Ari R, a passionate and certified Data Scientist skilled in Python, 
               Machine Learning, and Data Analysis. I enjoy transforming data into actionable 
               insights and building intelligent solutions. Currently exploring opportunities 
@@ -68,7 +68,7 @@ const Hero = () => {
               variant="hero" 
               size="xl" 
               onClick={scrollToAbout}
-              className="group bg-white/10 hover:bg-white/20 text-white border border-white/20 backdrop-blur-md transition-all duration-300"
+              className="group bg-white/10 hover:bg-white/20 text-black border border-white/20 backdrop-blur-md transition-all duration-300"
             >
               Explore My Work
               <ArrowDown className="w-5 h-5 group-hover:translate-y-1 transition-transform" />
@@ -77,7 +77,7 @@ const Hero = () => {
               variant="glass" 
               size="xl"
               onClick={() => window.open('https://github.com/ari-r-1', '_blank')}
-              className="group bg-white/5 hover:bg-white/15 text-white border border-white/20 backdrop-blur-md transition-all duration-300"
+              className="group bg-white/5 hover:bg-white/15 text-black border border-white/20 backdrop-blur-md transition-all duration-300"
             >
               <Github className="w-5 h-5 group-hover:rotate-12 transition-transform" />
               GitHub
@@ -86,7 +86,7 @@ const Hero = () => {
               variant="glass" 
               size="xl"
               onClick={() => window.open('https://www.linkedin.com/in/r-ari/', '_blank')}
-              className="group bg-white/5 hover:bg-white/15 text-white border border-white/20 backdrop-blur-md transition-all duration-300"
+              className="group bg-white/5 hover:bg-white/15 text-black border border-white/20 backdrop-blur-md transition-all duration-300"
             >
               <Linkedin className="w-5 h-5 group-hover:scale-110 transition-transform" />
               LinkedIn
@@ -95,7 +95,7 @@ const Hero = () => {
               variant="glass" 
               size="xl"
               onClick={() => window.open('mailto:ariranalyst@gmail.com')}
-              className="group bg-white/5 hover:bg-white/15 text-white border border-white/20 backdrop-blur-md transition-all duration-300"
+              className="group bg-white/5 hover:bg-white/15 text-black border border-white/20 backdrop-blur-md transition-all duration-300"
             >
               <Mail className="w-5 h-5 group-hover:scale-110 transition-transform" />
               Email
