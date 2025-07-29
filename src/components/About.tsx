@@ -35,10 +35,10 @@ const About = () => {
     <section id="about" className="py-20 bg-background">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className={`transition-all duration-1000 ${isVisible ? 'animate-slide-up' : 'opacity-0'}`}>
-          <h2 className="text-4xl md:text-5xl font-bold text-center mb-4">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-center mb-4 px-4">
             <span className="text-gradient">About Me</span>
           </h2>
-          <p className="text-center text-muted-foreground mb-16 max-w-2xl mx-auto">
+          <p className="text-center text-muted-foreground mb-16 max-w-2xl mx-auto px-4">
             Passionate about turning data into meaningful insights and actionable strategies
           </p>
 
@@ -72,7 +72,7 @@ const About = () => {
                   </div>
                   <h3 className="text-2xl font-semibold text-gradient-secondary">Core Skills</h3>
                 </div>
-                <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
+                <div className="grid grid-cols-1 xs:grid-cols-2 sm:grid-cols-2 md:grid-cols-3 gap-3">
                   {coreSkills.map((skill, index) => (
                     <Badge 
                       key={skill} 

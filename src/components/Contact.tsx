@@ -92,15 +92,15 @@ ${formData.message}
     <section id="contact" className="py-20 bg-muted/10">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className={`transition-all duration-1000 ${isVisible ? 'animate-slide-up' : 'opacity-0'}`}>
-          <h2 className="text-4xl md:text-5xl font-bold text-center mb-4">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-center mb-4 px-4">
             <span className="text-gradient">Get In Touch</span>
           </h2>
-          <p className="text-center text-muted-foreground mb-16 max-w-2xl mx-auto">
-            I'm always excited to discuss new opportunities, collaborate on projects, 
+          <p className="text-center text-muted-foreground mb-16 max-w-2xl mx-auto px-4">
+            I'm always excited to discuss new opportunities, collaborate on projects,
             or simply connect with fellow data enthusiasts. Let's build something amazing together!
           </p>
 
-          <div className="grid lg:grid-cols-2 gap-12">
+          <div className="grid md:grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12">
             {/* Contact Information */}
             <div className="space-y-8">
               <Card className="card-3d p-6">

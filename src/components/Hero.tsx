@@ -20,42 +20,42 @@ const Hero = () => {
       <div className="absolute inset-0 bg-gradient-to-br from-white/20 via-white/10 to-white/30" />
       <div className="absolute inset-0 bg-gradient-to-t from-background/30 via-transparent to-background/20" />
       
-      {/* Elegant Glass Floating Elements */}
-      <div className="absolute top-20 left-10 animate-float">
-        <div className="p-4 rounded-2xl glass-dark backdrop-blur-xl border border-white/10">
-          <Database className="w-8 h-8 text-primary/90 filter drop-shadow-lg" />
+      {/* Elegant Glass Floating Elements - Hidden on small screens */}
+      <div className="hidden sm:block absolute top-20 left-4 lg:left-10 animate-float">
+        <div className="p-3 lg:p-4 rounded-2xl glass-dark backdrop-blur-xl border border-white/10">
+          <Database className="w-6 h-6 lg:w-8 lg:h-8 text-primary/90 filter drop-shadow-lg" />
         </div>
       </div>
-      <div className="absolute top-40 right-20 animate-float" style={{ animationDelay: '1s' }}>
-        <div className="p-4 rounded-2xl glass-dark backdrop-blur-xl border border-white/10">
-          <Network className="w-10 h-10 text-secondary/90 filter drop-shadow-lg" />
+      <div className="hidden md:block absolute top-40 right-4 lg:right-20 animate-float" style={{ animationDelay: '1s' }}>
+        <div className="p-3 lg:p-4 rounded-2xl glass-dark backdrop-blur-xl border border-white/10">
+          <Network className="w-8 h-8 lg:w-10 lg:h-10 text-secondary/90 filter drop-shadow-lg" />
         </div>
       </div>
-      <div className="absolute bottom-32 left-20 animate-float" style={{ animationDelay: '2s' }}>
-        <div className="p-3 rounded-2xl glass-dark backdrop-blur-xl border border-white/10">
-          <Cpu className="w-6 h-6 text-accent/90 filter drop-shadow-lg" />
+      <div className="hidden sm:block absolute bottom-32 left-4 lg:left-20 animate-float" style={{ animationDelay: '2s' }}>
+        <div className="p-2 lg:p-3 rounded-2xl glass-dark backdrop-blur-xl border border-white/10">
+          <Cpu className="w-5 h-5 lg:w-6 lg:h-6 text-accent/90 filter drop-shadow-lg" />
         </div>
       </div>
-      <div className="absolute bottom-20 right-10 animate-float" style={{ animationDelay: '0.5s' }}>
-        <div className="p-4 rounded-2xl glass-dark backdrop-blur-xl border border-white/10">
-          <BarChart3 className="w-8 h-8 text-primary/90 filter drop-shadow-lg" />
+      <div className="hidden md:block absolute bottom-20 right-4 lg:right-10 animate-float" style={{ animationDelay: '0.5s' }}>
+        <div className="p-3 lg:p-4 rounded-2xl glass-dark backdrop-blur-xl border border-white/10">
+          <BarChart3 className="w-6 h-6 lg:w-8 lg:h-8 text-primary/90 filter drop-shadow-lg" />
         </div>
       </div>
 
       {/* Main Content - Elegant Glass Container */}
       <div className="relative z-10 text-center px-4 max-w-4xl mx-auto">
-        <div className="backdrop-blur-xl bg-white/5 border border-white/10 rounded-3xl p-12 shadow-2xl">
+        <div className="backdrop-blur-xl bg-white/5 border border-white/10 rounded-2xl lg:rounded-3xl p-6 sm:p-8 lg:p-12 shadow-2xl">
           <div className="animate-slide-up">
-            <h1 className="text-5xl md:text-7xl font-bold mb-6 tracking-tight">
+            <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold mb-6 tracking-tight">
               <span className="block text-black mb-2 filter drop-shadow-xl font-bold">Ari R</span>
-              <span className="text-2xl md:text-3xl font-bold text-black/80 filter drop-shadow-lg">
+              <span className="text-xl sm:text-2xl md:text-3xl font-bold text-black/80 filter drop-shadow-lg">
                 Certified Data Scientist
               </span>
             </h1>
           </div>
 
           <div className="animate-slide-up" style={{ animationDelay: '0.2s' }}>
-            <p className="text-lg md:text-xl text-black/70 mb-8 max-w-2xl mx-auto leading-relaxed filter drop-shadow-md font-bold">
+            <p className="text-base sm:text-lg md:text-xl text-black/70 mb-8 max-w-2xl mx-auto leading-relaxed filter drop-shadow-md font-bold">
               Hi, I'm Ari R, a passionate and certified Data Scientist skilled in Python, 
               Machine Learning, and Data Analysis. I enjoy transforming data into actionable 
               insights and building intelligent solutions. Currently exploring opportunities 
@@ -63,7 +63,7 @@ const Hero = () => {
             </p>
           </div>
 
-          <div className="animate-slide-up flex flex-col sm:flex-row gap-4 justify-center items-center" style={{ animationDelay: '0.4s' }}>
+          <div className="animate-slide-up flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center items-center" style={{ animationDelay: '0.4s' }}>
             <Button 
               variant="hero" 
               size="xl" 

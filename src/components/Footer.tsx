@@ -48,11 +48,13 @@ const Footer = () => {
 
         <Separator className="my-8" />
 
-        <div className="flex flex-col md:flex-row justify-between items-center gap-4">
-          <div className="flex items-center gap-2 text-muted-foreground">
+        <div className="flex flex-col md:flex-row justify-between items-center gap-4 text-center md:text-left">
+          <div className="flex flex-col sm:flex-row items-center gap-2 text-muted-foreground">
             <span>© {new Date().getFullYear()} Ari R</span>
-            <Heart className="w-4 h-4 text-red-500 fill-current" />
-            <span>for data science</span>
+            <div className="flex items-center gap-2">
+              <Heart className="w-4 h-4 text-red-500 fill-current" />
+              <span>for data science</span>
+            </div>
           </div>
 
           {/* Scroll to top button */}
