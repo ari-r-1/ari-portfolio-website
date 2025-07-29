@@ -47,15 +47,15 @@ const Hero = () => {
         <div className="backdrop-blur-xl bg-white/5 border border-white/10 rounded-3xl p-12 shadow-2xl">
           <div className="animate-slide-up">
             <h1 className="text-5xl md:text-7xl font-bold mb-6 tracking-tight">
-              <span className="block text-white mb-2 filter drop-shadow-xl">Ari R</span>
-              <span className="text-2xl md:text-3xl font-normal text-white/80 filter drop-shadow-lg">
+              <span className="block text-white mb-2 filter drop-shadow-xl font-bold">Ari R</span>
+              <span className="text-2xl md:text-3xl font-bold text-white/80 filter drop-shadow-lg">
                 Certified Data Scientist
               </span>
             </h1>
           </div>
 
           <div className="animate-slide-up" style={{ animationDelay: '0.2s' }}>
-            <p className="text-lg md:text-xl text-white/70 mb-8 max-w-2xl mx-auto leading-relaxed filter drop-shadow-md">
+            <p className="text-lg md:text-xl text-white/70 mb-8 max-w-2xl mx-auto leading-relaxed filter drop-shadow-md font-bold">
               Hi, I'm Ari R, a passionate and certified Data Scientist skilled in Python, 
               Machine Learning, and Data Analysis. I enjoy transforming data into actionable 
               insights and building intelligent solutions. Currently exploring opportunities 
