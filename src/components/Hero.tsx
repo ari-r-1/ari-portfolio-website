@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { ArrowDown, Database, Network, Cpu, BarChart3, Github, Linkedin, Mail } from "lucide-react";
-import futuristicBg from "@/assets/futuristic-bg-dark.jpg";
+import futuristicBg from "@/assets/futuristic-bg-light.jpg";
 
 const Hero = () => {
   const scrollToAbout = () => {
@@ -14,11 +14,11 @@ const Hero = () => {
         className="absolute inset-0 bg-cover bg-center bg-no-repeat"
         style={{ 
           backgroundImage: `url(${futuristicBg})`,
-          filter: 'brightness(0.3) contrast(1.2)'
+          filter: 'brightness(0.9) contrast(1.1)'
         }}
       />
-      <div className="absolute inset-0 bg-gradient-to-br from-black/60 via-black/40 to-black/70" />
-      <div className="absolute inset-0 bg-gradient-to-t from-background/20 via-transparent to-background/10" />
+      <div className="absolute inset-0 bg-gradient-to-br from-white/20 via-white/10 to-white/30" />
+      <div className="absolute inset-0 bg-gradient-to-t from-background/30 via-transparent to-background/20" />
       
       {/* Elegant Glass Floating Elements */}
       <div className="absolute top-20 left-10 animate-float">
