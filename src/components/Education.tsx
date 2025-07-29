@@ -34,15 +34,15 @@ const Education = () => {
     {
       degree: "HSC(12th)",
       school: "Government Boys Higher Secondary School",
-      grade: "93.5%",
+      grade: "1122/1200",
       period: "2016 – 2017",
       location: "Erode, India",
       type: "Higher Secondary"
     },
     {
-      degree: "10th Grade",
+      degree: "SSLC(10th)",
       school: "Government Boys Higher Secondary School",
-      grade: "90.2%",
+      grade: "451/500",
       period: "2014 – 2015",
       location: "Erode, India",
       type: "Secondary"
