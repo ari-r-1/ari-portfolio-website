@@ -131,36 +131,36 @@ const CoreCompetencies = () => {
   ];
 
   return (
-    <section id="competencies" className="py-20 bg-background">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="competencies" className="py-12 sm:py-16 md:py-20 bg-background">
+      <div className="max-w-7xl mx-auto px-3 xs:px-4 sm:px-6 lg:px-8">
         <div className={`transition-all duration-1000 ${isVisible ? 'animate-slide-up' : 'opacity-0'}`}>
-          <h2 className="text-4xl md:text-5xl font-bold text-center mb-4">
+          <h2 className="text-2xl xs:text-3xl sm:text-4xl md:text-5xl font-bold text-center mb-3 sm:mb-4">
             <span className="text-gradient">Core Competencies</span>
           </h2>
-          <p className="text-center text-muted-foreground mb-16 max-w-2xl mx-auto">
+          <p className="text-center text-muted-foreground mb-8 sm:mb-12 md:mb-16 max-w-2xl mx-auto text-sm sm:text-base px-4">
             Essential soft skills and leadership qualities that drive success in data science and technology
           </p>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+          <div className="grid grid-cols-1 xs:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 xs:gap-4 sm:gap-5 md:gap-6">
             {competencies.map((competency, index) => (
               <Card 
                 key={competency.title}
-                className="card-3d p-6 hover:scale-105 transition-all duration-500 group text-center"
+                className="card-3d p-3 xs:p-4 sm:p-5 md:p-6 hover:scale-105 transition-all duration-500 group text-center"
                 style={{ animationDelay: `${index * 0.05}s` }}
               >
-                <div className="space-y-4">
+                <div className="space-y-2 xs:space-y-3 sm:space-y-4">
                   {/* Icon */}
-                  <div className={`p-3 ${competency.bgColor} rounded-lg skill-icon pulse-glow mx-auto w-fit`}>
-                    <competency.icon className={`w-8 h-8 ${competency.color}`} />
+                  <div className={`p-2 xs:p-2.5 sm:p-3 ${competency.bgColor} rounded-lg skill-icon pulse-glow mx-auto w-fit`}>
+                    <competency.icon className={`w-5 h-5 xs:w-6 xs:h-6 sm:w-7 sm:h-7 md:w-8 md:h-8 ${competency.color}`} />
                   </div>
 
                   {/* Title */}
-                  <h3 className="text-lg font-bold text-gradient group-hover:text-gradient-secondary transition-all duration-300">
+                  <h3 className="text-sm xs:text-base sm:text-lg font-bold text-gradient group-hover:text-gradient-secondary transition-all duration-300">
                     {competency.title}
                   </h3>
 
                   {/* Description */}
-                  <p className="text-muted-foreground text-sm leading-relaxed">
+                  <p className="text-muted-foreground text-xs xs:text-sm leading-relaxed">
                     {competency.description}
                   </p>
                 </div>
