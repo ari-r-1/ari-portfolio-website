@@ -55,42 +55,42 @@ const Projects = () => {
   ];
 
   return (
-    <section id="projects" className="py-20 bg-background">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="projects" className="py-12 sm:py-16 md:py-20 bg-background">
+      <div className="max-w-7xl mx-auto px-3 xs:px-4 sm:px-6 lg:px-8">
         <div className={`transition-all duration-1000 ${isVisible ? 'animate-slide-up' : 'opacity-0'}`}>
-          <h2 className="text-4xl md:text-5xl font-bold text-center mb-4">
+          <h2 className="text-2xl xs:text-3xl sm:text-4xl md:text-5xl font-bold text-center mb-3 sm:mb-4">
             <span className="text-gradient">Featured Projects</span>
           </h2>
-          <p className="text-center text-muted-foreground mb-16 max-w-2xl mx-auto">
+          <p className="text-center text-muted-foreground mb-8 sm:mb-12 md:mb-16 max-w-2xl mx-auto text-sm sm:text-base px-4">
             A showcase of my data science and web development projects demonstrating end-to-end solutions 
             across various domains including healthcare, NLP, and data processing.
           </p>
 
-          <div className="grid md:grid-cols-2 gap-8">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6 lg:gap-8">
             {projects.map((project, index) => (
               <Card 
                 key={project.title}
-                className="card-3d p-6 hover:scale-105 transition-all duration-500 group"
+                className="card-3d p-4 sm:p-5 lg:p-6 hover:scale-105 transition-all duration-500 group"
                 style={{ animationDelay: `${index * 0.1}s` }}
               >
-                <div className="space-y-4">
+                <div className="space-y-3 sm:space-y-4">
                   {/* Category Badge */}
-                  <Badge variant="secondary" className="mb-2">
+                  <Badge variant="secondary" className="mb-1 sm:mb-2 text-xs">
                     {project.category}
                   </Badge>
 
                   {/* Project Title */}
-                  <h3 className="text-xl font-bold text-gradient group-hover:text-gradient-secondary transition-all duration-300">
+                  <h3 className="text-lg sm:text-xl font-bold text-gradient group-hover:text-gradient-secondary transition-all duration-300">
                     {project.title}
                   </h3>
 
                   {/* Description */}
-                  <p className="text-muted-foreground text-sm leading-relaxed">
+                  <p className="text-muted-foreground text-xs sm:text-sm leading-relaxed">
                     {project.description}
                   </p>
 
                   {/* Technologies */}
-                  <div className="flex flex-wrap gap-2">
+                  <div className="flex flex-wrap gap-1.5 sm:gap-2">
                     {project.technologies.map((tech) => (
                       <Badge 
                         key={tech} 
@@ -103,14 +103,14 @@ const Projects = () => {
                   </div>
 
                   {/* Action Buttons */}
-                  <div className="flex gap-3 pt-4">
+                  <div className="flex gap-2 sm:gap-3 pt-3 sm:pt-4">
                     <Button 
                       variant="glow" 
                       size="sm" 
-                      className="flex-1 group/btn"
+                      className="flex-1 group/btn text-xs sm:text-sm"
                       onClick={() => window.open(project.github, '_blank')}
                     >
-                      <Github className="w-4 h-4 group-hover/btn:rotate-12 transition-transform" />
+                      <Github className="w-3 h-3 sm:w-4 sm:h-4 group-hover/btn:rotate-12 transition-transform" />
                       GitHub
                     </Button>
                   </div>
@@ -123,15 +123,15 @@ const Projects = () => {
           </div>
 
           {/* View More Button */}
-          <div className="text-center mt-12">
+          <div className="text-center mt-8 sm:mt-10 lg:mt-12">
             <Button 
               variant="hero" 
               size="lg"
               onClick={() => window.open('https://github.com/ari-r-1', '_blank')}
-              className="group"
+              className="group text-sm sm:text-base"
             >
               View All Projects on GitHub
-              <ExternalLink className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+              <ExternalLink className="w-4 h-4 sm:w-5 sm:h-5 group-hover:translate-x-1 transition-transform" />
             </Button>
           </div>
         </div>

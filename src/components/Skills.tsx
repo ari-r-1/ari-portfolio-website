@@ -148,40 +148,40 @@ const Skills = () => {
   ];
 
   return (
-    <section id="skills" className="py-20 bg-muted/10">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="skills" className="py-12 sm:py-16 md:py-20 bg-muted/10">
+      <div className="max-w-7xl mx-auto px-3 xs:px-4 sm:px-6 lg:px-8">
         <div className={`transition-all duration-1000 ${isVisible ? 'animate-slide-up' : 'opacity-0'}`}>
-          <h2 className="text-4xl md:text-5xl font-bold text-center mb-4">
+          <h2 className="text-2xl xs:text-3xl sm:text-4xl md:text-5xl font-bold text-center mb-3 sm:mb-4">
             <span className="text-gradient">Technical Skills</span>
           </h2>
-          <p className="text-center text-muted-foreground mb-4">
+          <p className="text-center text-muted-foreground mb-2 text-sm sm:text-base">
             Junior Data Scientist
           </p>
-          <p className="text-center text-muted-foreground mb-16 max-w-2xl mx-auto">
+          <p className="text-center text-muted-foreground mb-8 sm:mb-12 md:mb-16 max-w-2xl mx-auto text-sm sm:text-base px-4">
             Comprehensive technical expertise across data science, machine learning, 
             and software development domains with hands-on project experience.
           </p>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8">
             {skillCategories.map((category, categoryIndex) => (
               <Card 
                 key={category.title} 
-                className="card-3d p-6 hover:scale-105 transition-all duration-300"
+                className="card-3d p-4 sm:p-5 lg:p-6 hover:scale-105 transition-all duration-300"
                 style={{ animationDelay: `${categoryIndex * 0.1}s` }}
               >
-                <div className="flex items-center gap-3 mb-6">
-                  <div className={`p-2 ${category.bgColor} rounded-lg skill-icon`}>
-                    <category.icon className={`w-6 h-6 ${category.color}`} />
+                <div className="flex items-center gap-2 sm:gap-3 mb-4 sm:mb-6">
+                  <div className={`p-1.5 sm:p-2 ${category.bgColor} rounded-lg skill-icon`}>
+                    <category.icon className={`w-4 h-4 sm:w-5 sm:h-5 lg:w-6 lg:h-6 ${category.color}`} />
                   </div>
-                  <h3 className="font-semibold text-lg text-gradient">{category.title}</h3>
+                  <h3 className="font-semibold text-sm sm:text-base lg:text-lg text-gradient">{category.title}</h3>
                 </div>
 
-                <div className="space-y-3">
+                <div className="space-y-2 sm:space-y-3">
                   {category.skills.map((skill, skillIndex) => (
                     <Badge 
                       key={skill}
                       variant="outline" 
-                      className="w-full justify-start text-left p-3 hover:bg-primary/10 transition-colors text-xs leading-relaxed"
+                      className="w-full justify-start text-left p-2 sm:p-3 hover:bg-primary/10 transition-colors text-xs leading-relaxed"
                       style={{ 
                         animationDelay: `${(categoryIndex * 0.1) + (skillIndex * 0.05)}s`,
                       }}
