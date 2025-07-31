@@ -49,22 +49,24 @@ const Hero = () => {
 
       {/* Main Content - Elegant Glass Container */}
       <div className="relative z-10 text-center px-4 max-w-4xl mx-auto">
-        <div className="backdrop-blur-xl bg-white/5 border border-white/10 rounded-2xl lg:rounded-3xl p-6 sm:p-8 lg:p-12 shadow-2xl">
+        <div className="backdrop-blur-xl bg-white/5 border border-white/10 rounded-2xl lg:rounded-3xl p-6 sm:p-8 lg:p-12 shadow-2xl hover:shadow-3xl transition-all duration-500 group">
           <div className="animate-slide-up">
-            <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold mb-6 tracking-tight">
-              <span className="block text-black mb-2 filter drop-shadow-xl font-bold">Ari R</span>
-              <span className="text-xl sm:text-2xl md:text-3xl font-bold text-black/80 filter drop-shadow-lg">
+            <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black mb-6 tracking-tight">
+              <span className="block text-black mb-2 filter drop-shadow-xl font-black bg-gradient-to-r from-slate-900 via-slate-700 to-slate-900 bg-clip-text text-transparent animate-pulse-glow">
+                Ari R
+              </span>
+              <span className="text-xl sm:text-2xl md:text-3xl font-bold text-black/80 filter drop-shadow-lg font-mono tracking-wide">
                 Certified Data Scientist
               </span>
             </h1>
           </div>
 
           <div className="animate-slide-up" style={{ animationDelay: '0.2s' }}>
-            <p className="text-base sm:text-lg md:text-xl text-black/70 mb-8 max-w-2xl mx-auto leading-relaxed filter drop-shadow-md font-bold">
-              Hi, I'm Ari R, a passionate and certified Data Scientist skilled in Python, 
+            <p className="text-base sm:text-lg md:text-xl text-black/70 mb-8 max-w-2xl mx-auto leading-relaxed filter drop-shadow-md font-medium">
+              Hi, I'm Ari R, a passionate and certified <span className="font-bold text-black bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">Data Scientist</span> skilled in Python, 
               Machine Learning, and Data Analysis. I enjoy transforming data into actionable 
               insights and building intelligent solutions. Currently exploring opportunities 
-              to apply AI in real-world scenarios.
+              to apply <span className="font-bold text-black bg-gradient-to-r from-green-600 to-blue-600 bg-clip-text text-transparent">AI</span> in real-world scenarios.
             </p>
           </div>
 
@@ -73,7 +75,7 @@ const Hero = () => {
               variant="hero" 
               size="xl" 
               onClick={scrollToAbout}
-              className="group bg-white/10 hover:bg-white/20 text-black border border-white/20 backdrop-blur-md transition-all duration-300"
+              className="group bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white border-0 backdrop-blur-md transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105"
             >
               Explore My Work
               <ArrowDown className="w-5 h-5 group-hover:translate-y-1 transition-transform" />
@@ -82,7 +84,7 @@ const Hero = () => {
               variant="glass" 
               size="xl"
               onClick={() => window.open('https://github.com/ari-r-1', '_blank')}
-              className="group bg-white/5 hover:bg-white/15 text-black border border-white/20 backdrop-blur-md transition-all duration-300"
+              className="group bg-white/10 hover:bg-gradient-to-r hover:from-gray-900 hover:to-black text-black hover:text-white border border-white/20 backdrop-blur-md transition-all duration-300 transform hover:scale-105"
             >
               <Github className="w-5 h-5 group-hover:rotate-12 transition-transform" />
               GitHub
@@ -91,7 +93,7 @@ const Hero = () => {
               variant="glass" 
               size="xl"
               onClick={() => window.open('https://www.linkedin.com/in/r-ari/', '_blank')}
-              className="group bg-white/5 hover:bg-white/15 text-black border border-white/20 backdrop-blur-md transition-all duration-300"
+              className="group bg-white/10 hover:bg-gradient-to-r hover:from-blue-600 hover:to-blue-800 text-black hover:text-white border border-white/20 backdrop-blur-md transition-all duration-300 transform hover:scale-105"
             >
               <Linkedin className="w-5 h-5 group-hover:scale-110 transition-transform" />
               LinkedIn
@@ -100,7 +102,7 @@ const Hero = () => {
               variant="glass" 
               size="xl"
               onClick={() => window.open('mailto:ariranalyst@gmail.com')}
-              className="group bg-white/5 hover:bg-white/15 text-black border border-white/20 backdrop-blur-md transition-all duration-300"
+              className="group bg-white/10 hover:bg-gradient-to-r hover:from-green-600 hover:to-emerald-600 text-black hover:text-white border border-white/20 backdrop-blur-md transition-all duration-300 transform hover:scale-105"
             >
               <Mail className="w-5 h-5 group-hover:scale-110 transition-transform" />
               Email

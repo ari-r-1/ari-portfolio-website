@@ -10,6 +10,10 @@ export default {
 	],
 	prefix: "",
 	theme: {
+      fontFamily: {
+        sans: ['Inter', 'system-ui', 'sans-serif'],
+        mono: ['JetBrains Mono', 'Fira Code', 'monospace'],
+      },
 		container: {
 			center: true,
 			padding: '2rem',
