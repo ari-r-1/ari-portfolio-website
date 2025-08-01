@@ -166,7 +166,7 @@ const Skills = () => {
             {skillCategories.map((category, categoryIndex) => (
               <Card 
                 key={category.title} 
-                className="card-3d p-4 sm:p-5 lg:p-6 hover:scale-105 transition-all duration-300"
+                className="card-3d p-4 sm:p-5 lg:p-6 hover:scale-105 transition-all duration-300 border-glass-border hover:shadow-glass"
                 style={{ animationDelay: `${categoryIndex * 0.1}s` }}
               >
                 <div className="flex items-center gap-2 sm:gap-3 mb-4 sm:mb-6">

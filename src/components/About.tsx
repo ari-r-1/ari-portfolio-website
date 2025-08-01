@@ -46,7 +46,7 @@ const About = () => {
             {/* Content */}
             <div className="space-y-8">
               {/* Professional Summary */}
-              <Card className="card-3d p-6">
+              <Card className="card-3d p-6 border-glass-border hover:shadow-glass">
                 <div className="flex items-center gap-3 mb-4">
                   <div className="p-2 bg-primary/10 rounded-lg skill-icon pulse-glow">
                     <Briefcase className="w-6 h-6 text-primary" />
@@ -65,7 +65,7 @@ const About = () => {
               </Card>
 
               {/* Core Skills */}
-              <Card className="card-3d p-6">
+              <Card className="card-3d p-6 border-glass-border hover:shadow-glass">
                 <div className="flex items-center gap-3 mb-4">
                   <div className="p-2 bg-secondary/10 rounded-lg skill-icon pulse-glow">
                     <User className="w-6 h-6 text-secondary" />

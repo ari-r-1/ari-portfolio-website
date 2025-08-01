@@ -103,7 +103,7 @@ ${formData.message}
           <div className="grid md:grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12">
             {/* Contact Information */}
             <div className="space-y-8">
-              <Card className="card-3d p-6">
+              <Card className="card-3d p-6 border-glass-border hover:shadow-glass">
                 <h3 className="text-2xl font-semibold mb-6 text-gradient">Contact Information</h3>
                 
                 <div className="space-y-4">
@@ -130,7 +130,7 @@ ${formData.message}
               </Card>
 
               {/* Social Links */}
-              <Card className="card-3d p-6">
+              <Card className="card-3d p-6 border-glass-border hover:shadow-glass">
                 <h3 className="text-xl font-semibold mb-6">Connect With Me</h3>
                 <div className="flex gap-4">
                   {socialLinks.map((social) => (
@@ -148,7 +148,7 @@ ${formData.message}
               </Card>
 
               {/* Resume Download */}
-              <Card className="card-3d p-6">
+              <Card className="card-3d p-6 border-glass-border hover:shadow-glass">
                 <h3 className="text-xl font-semibold mb-4">Resume</h3>
                 <p className="text-muted-foreground mb-4">
                   Download my complete resume for detailed information about my experience and qualifications.
@@ -161,7 +161,7 @@ ${formData.message}
             </div>
 
             {/* Contact Form */}
-            <Card className="card-3d p-6">
+            <Card className="card-3d p-6 border-glass-border hover:shadow-glass">
               <h3 className="text-2xl font-semibold mb-6 text-gradient-secondary">Send a Message</h3>
               
               <form onSubmit={handleSubmit} className="space-y-6">

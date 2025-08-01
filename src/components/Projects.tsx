@@ -70,7 +70,7 @@ const Projects = () => {
             {projects.map((project, index) => (
               <Card 
                 key={project.title}
-                className="card-3d p-4 sm:p-5 lg:p-6 hover:scale-105 transition-all duration-500 group"
+                className="card-3d p-4 sm:p-5 lg:p-6 hover:scale-105 transition-all duration-500 group border-glass-border hover:shadow-glass"
                 style={{ animationDelay: `${index * 0.1}s` }}
               >
                 <div className="space-y-3 sm:space-y-4">
