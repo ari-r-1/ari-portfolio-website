@@ -48,7 +48,7 @@ const Hero = () => {
         <div className="backdrop-blur-xl bg-white/5 border border-white/10 rounded-2xl lg:rounded-3xl p-6 sm:p-8 lg:p-12 shadow-2xl hover:shadow-3xl transition-all duration-500 group">
           <div className="animate-slide-up">
             <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black mb-6 tracking-tight">
-              <span className="block text-black mb-2 filter drop-shadow-xl font-black bg-gradient-to-r from-slate-900 via-slate-700 to-slate-900 bg-clip-text text-transparent animate-pulse-glow">
+              <span className="block text-black mb-2 font-black tracking-tight">
                 Ari R
               </span>
               <span className="text-xl sm:text-2xl md:text-3xl font-bold text-black/80 filter drop-shadow-lg font-mono tracking-wide">
