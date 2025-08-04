@@ -153,7 +153,16 @@ ${formData.message}
                 <p className="text-muted-foreground mb-4">
                   Download my complete resume for detailed information about my experience and qualifications.
                 </p>
-                <Button variant="glow" className="w-full group">
+                <Button 
+                  variant="glow" 
+                  className="w-full group"
+                  onClick={() => {
+                    const link = document.createElement('a');
+                    link.href = '/resume.pdf';
+                    link.download = 'Ari_R_Resume.pdf';
+                    link.click();
+                  }}
+                >
                   <Download className="w-4 h-4 group-hover:translate-y-1 transition-transform" />
                   Download Resume (PDF)
                 </Button>
