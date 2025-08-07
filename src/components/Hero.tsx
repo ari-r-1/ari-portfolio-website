@@ -2,6 +2,7 @@ import { Button } from "@/components/ui/button";
 import { ArrowDown, Database, Network, Cpu, BarChart3, Github, Linkedin, Mail } from "lucide-react";
 import futuristicBg from "@/assets/futuristic-bg-light.jpg";
 import mathAIBg from "@/assets/math-ai-light-bg.jpg";
+import Scene3D from "./Scene3D";
 
 const Hero = () => {
   const scrollToAbout = () => {
@@ -10,16 +11,19 @@ const Hero = () => {
 
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
+      {/* 3D Animated Background */}
+      <Scene3D />
+      
       {/* Dark Elegant Glass Background */}
       <div 
-        className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+        className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-20"
         style={{ 
           backgroundImage: `url(${futuristicBg})`,
           filter: 'brightness(0.9) contrast(1.1)'
         }}
       />
-      <div className="absolute inset-0 bg-gradient-to-br from-white/20 via-white/10 to-white/30" />
-      <div className="absolute inset-0 bg-gradient-to-t from-background/30 via-transparent to-background/20" />
+      <div className="absolute inset-0 bg-gradient-to-br from-white/10 via-white/5 to-white/15" />
+      <div className="absolute inset-0 bg-gradient-to-t from-background/20 via-transparent to-background/10" />
       
       {/* Elegant Glass Floating Elements - Hidden on small screens */}
       <div className="hidden sm:block absolute top-20 left-4 lg:left-10 animate-float">
