@@ -2,84 +2,114 @@ import { useRef, useMemo } from "react";
 import { Canvas, useFrame } from "@react-three/fiber";
 import * as THREE from "three";
 
-function FloatingGeometry({ position, color, rotationSpeed = 1 }: { 
+function DataNode({ position, size = 0.15, color = "#64748b" }: { 
   position: [number, number, number]; 
-  color: string; 
-  rotationSpeed?: number;
+  size?: number;
+  color?: string;
 }) {
   const meshRef = useRef<THREE.Mesh>(null);
   
   useFrame((state) => {
     if (meshRef.current) {
-      meshRef.current.rotation.x = state.clock.elapsedTime * rotationSpeed * 0.3;
-      meshRef.current.rotation.y = state.clock.elapsedTime * rotationSpeed * 0.2;
-      meshRef.current.position.y = position[1] + Math.sin(state.clock.elapsedTime * rotationSpeed) * 0.3;
+      // Gentle floating motion
+      meshRef.current.position.y = position[1] + Math.sin(state.clock.elapsedTime * 0.5 + position[0]) * 0.2;
+      meshRef.current.position.x = position[0] + Math.cos(state.clock.elapsedTime * 0.3 + position[2]) * 0.1;
+      // Very slow rotation
+      meshRef.current.rotation.y = state.clock.elapsedTime * 0.1;
     }
   });
 
   return (
     <mesh ref={meshRef} position={position}>
-      <icosahedronGeometry args={[0.3, 1]} />
+      <sphereGeometry args={[size, 16, 16]} />
       <meshStandardMaterial 
         color={color} 
         transparent 
         opacity={0.7}
-        roughness={0.1}
-        metalness={0.8}
-        emissive={color}
-        emissiveIntensity={0.1}
+        roughness={0.3}
+        metalness={0.1}
       />
     </mesh>
   );
 }
 
-function AnimatedSphere({ position, color, scale = 1 }: { 
+function DataCube({ position, color = "#475569" }: { 
   position: [number, number, number]; 
-  color: string; 
-  scale?: number;
+  color?: string;
 }) {
   const meshRef = useRef<THREE.Mesh>(null);
   
   useFrame((state) => {
     if (meshRef.current) {
-      meshRef.current.rotation.x += 0.01;
-      meshRef.current.rotation.y += 0.005;
-      meshRef.current.scale.setScalar(scale + Math.sin(state.clock.elapsedTime * 2) * 0.1);
+      // Gentle breathing motion
+      const scale = 1 + Math.sin(state.clock.elapsedTime * 0.4 + position[0] * 2) * 0.1;
+      meshRef.current.scale.setScalar(scale);
+      // Slow rotation
+      meshRef.current.rotation.x = state.clock.elapsedTime * 0.05;
+      meshRef.current.rotation.y = state.clock.elapsedTime * 0.08;
     }
   });
 
   return (
     <mesh ref={meshRef} position={position}>
-      <sphereGeometry args={[0.2, 32, 32]} />
+      <boxGeometry args={[0.25, 0.25, 0.25]} />
       <meshStandardMaterial 
         color={color} 
         transparent 
         opacity={0.6}
+        roughness={0.4}
+        metalness={0.2}
         wireframe
-        emissive={color}
-        emissiveIntensity={0.2}
       />
     </mesh>
   );
 }
 
-function ParticleField() {
+function FloatingGrid() {
+  const gridRef = useRef<THREE.Mesh>(null);
+  
+  useFrame((state) => {
+    if (gridRef.current) {
+      // Gentle wave motion
+      gridRef.current.position.y = Math.sin(state.clock.elapsedTime * 0.2) * 0.1;
+      gridRef.current.rotation.z = Math.sin(state.clock.elapsedTime * 0.1) * 0.02;
+    }
+  });
+
+  return (
+    <mesh ref={gridRef} position={[0, -2, -6]}>
+      <planeGeometry args={[8, 8, 20, 20]} />
+      <meshStandardMaterial 
+        color="#374151" 
+        transparent 
+        opacity={0.1}
+        wireframe
+      />
+    </mesh>
+  );
+}
+
+function DataParticles() {
   const particlesRef = useRef<THREE.Points>(null);
   
   const particlesPosition = useMemo(() => {
-    const positions = new Float32Array(1000 * 3);
-    for (let i = 0; i < 1000; i++) {
-      positions[i * 3] = (Math.random() - 0.5) * 15;
-      positions[i * 3 + 1] = (Math.random() - 0.5) * 15;
-      positions[i * 3 + 2] = (Math.random() - 0.5) * 15;
+    const positions = new Float32Array(300 * 3);
+    for (let i = 0; i < 300; i++) {
+      positions[i * 3] = (Math.random() - 0.5) * 12;
+      positions[i * 3 + 1] = (Math.random() - 0.5) * 8;
+      positions[i * 3 + 2] = (Math.random() - 0.5) * 12;
     }
     return positions;
   }, []);
 
   useFrame((state) => {
     if (particlesRef.current) {
-      particlesRef.current.rotation.x = state.clock.elapsedTime * 0.1;
-      particlesRef.current.rotation.y = state.clock.elapsedTime * 0.05;
+      // Very slow rotation
+      particlesRef.current.rotation.y = state.clock.elapsedTime * 0.02;
+      
+      // Gentle breathing effect
+      const scale = 1 + Math.sin(state.clock.elapsedTime * 0.2) * 0.1;
+      particlesRef.current.scale.setScalar(scale);
     }
   });
 
@@ -88,48 +118,64 @@ function ParticleField() {
       <bufferGeometry>
         <bufferAttribute
           attach="attributes-position"
-          count={1000}
+          count={300}
           array={particlesPosition}
           itemSize={3}
         />
       </bufferGeometry>
       <pointsMaterial
-        color="#8b5cf6"
-        size={0.03}
+        color="#64748b"
+        size={0.02}
         sizeAttenuation={true}
         transparent
-        opacity={0.6}
+        opacity={0.4}
       />
     </points>
   );
 }
 
+
 const Scene3D = () => {
   return (
     <div className="absolute inset-0 w-full h-full">
       <Canvas
-        camera={{ position: [0, 0, 8], fov: 60 }}
+        camera={{ position: [0, 0, 6], fov: 50 }}
         className="w-full h-full"
         gl={{ alpha: true, antialias: true }}
       >
-        <ambientLight intensity={0.3} />
-        <directionalLight position={[10, 10, 5]} intensity={0.5} color="#ffffff" />
-        <pointLight position={[-10, -10, -5]} intensity={0.3} color="#8b5cf6" />
-        <pointLight position={[10, -10, 5]} intensity={0.3} color="#3b82f6" />
+        {/* Soft ambient lighting */}
+        <ambientLight intensity={0.4} color="#f8fafc" />
+        <directionalLight 
+          position={[5, 5, 5]} 
+          intensity={0.3} 
+          color="#ffffff" 
+        />
+        <pointLight 
+          position={[-5, 3, 2]} 
+          intensity={0.2} 
+          color="#0ea5e9" 
+        />
         
-        <ParticleField />
+        {/* Data particles background */}
+        <DataParticles />
         
-        {/* Floating geometric shapes */}
-        <FloatingGeometry position={[-4, 2, -2]} color="#8b5cf6" rotationSpeed={1.2} />
-        <FloatingGeometry position={[4, -1, -3]} color="#3b82f6" rotationSpeed={0.8} />
-        <FloatingGeometry position={[-2, -3, -1]} color="#06b6d4" rotationSpeed={1.5} />
-        <FloatingGeometry position={[3, 3, -2]} color="#8b5cf6" rotationSpeed={0.9} />
+        {/* Floating grid */}
+        <FloatingGrid />
         
-        {/* Animated spheres */}
-        <AnimatedSphere position={[-5, -2, -4]} color="#3b82f6" scale={0.8} />
-        <AnimatedSphere position={[5, 2, -5]} color="#8b5cf6" scale={1.2} />
-        <AnimatedSphere position={[0, -4, -3]} color="#06b6d4" scale={1.0} />
-        <AnimatedSphere position={[-3, 4, -6]} color="#3b82f6" scale={0.9} />
+        {/* Data nodes - simple spheres */}
+        <DataNode position={[-3, 1, -2]} size={0.12} color="#64748b" />
+        <DataNode position={[2, -1, -3]} size={0.15} color="#0ea5e9" />
+        <DataNode position={[-1, -2, -1]} size={0.10} color="#64748b" />
+        <DataNode position={[3, 2, -2]} size={0.13} color="#14b8a6" />
+        <DataNode position={[-4, -1, -4]} size={0.11} color="#64748b" />
+        <DataNode position={[4, 1, -5]} size={0.14} color="#0ea5e9" />
+        <DataNode position={[0, 3, -3]} size={0.12} color="#14b8a6" />
+        <DataNode position={[-2, 0, -6]} size={0.10} color="#64748b" />
+        
+        {/* Data cubes - wireframe geometric forms */}
+        <DataCube position={[-2, 2, -4]} color="#475569" />
+        <DataCube position={[1, -3, -2]} color="#475569" />
+        <DataCube position={[3, -1, -6]} color="#475569" />
       </Canvas>
     </div>
   );
