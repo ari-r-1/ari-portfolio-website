@@ -154,7 +154,7 @@ ${formData.message}
                   Download my complete resume for detailed information about my experience and qualifications.
                 </p>
                 <Button 
-                  variant="glow" 
+                  variant="hero" 
                   className="w-full group"
                   onClick={() => {
                     const link = document.createElement('a');

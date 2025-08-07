@@ -105,7 +105,7 @@ const Projects = () => {
                   {/* Action Buttons */}
                   <div className="flex gap-2 sm:gap-3 pt-3 sm:pt-4">
                     <Button 
-                      variant="glow" 
+                      variant="elegant" 
                       size="sm" 
                       className="flex-1 group/btn text-xs sm:text-sm"
                       onClick={() => window.open(project.github, '_blank')}
