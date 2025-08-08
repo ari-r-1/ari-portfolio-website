@@ -14,16 +14,9 @@ const Hero = () => {
       {/* 3D Animated Background */}
       <Scene3D />
       
-      {/* Dark Elegant Glass Background */}
-      <div 
-        className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-20"
-        style={{ 
-          backgroundImage: `url(${futuristicBg})`,
-          filter: 'brightness(0.9) contrast(1.1)'
-        }}
-      />
-      <div className="absolute inset-0 bg-gradient-to-br from-white/10 via-white/5 to-white/15" />
-      <div className="absolute inset-0 bg-gradient-to-t from-background/20 via-transparent to-background/10" />
+      {/* Reduced opacity overlay to make 3D background more visible */}
+      <div className="absolute inset-0 bg-gradient-to-br from-white/5 via-transparent to-white/10" />
+      <div className="absolute inset-0 bg-gradient-to-t from-background/10 via-transparent to-background/5" />
       
       {/* Elegant Glass Floating Elements - Hidden on small screens */}
       <div className="hidden sm:block absolute top-20 left-4 lg:left-10 animate-float">
