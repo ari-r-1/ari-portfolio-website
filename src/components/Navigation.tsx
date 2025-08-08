@@ -31,26 +31,27 @@ const Navigation = () => {
   return (
     <nav className={`fixed top-0 w-full z-50 transition-all duration-500 ${
       scrolled 
-        ? 'glass-strong shadow-elegant border-b border-glass-border' 
+        ? 'glass-strong backdrop-blur-xl border-b border-glass-border shadow-glass' 
         : 'bg-transparent'
     }`}>
-      <div className="container-width">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
           <div className="flex-shrink-0">
-            <span className="text-2xl font-display font-bold gradient-text">AR</span>
+            <span className="text-2xl font-bold text-gradient">AR</span>
           </div>
 
           {/* Desktop Navigation */}
           <div className="hidden md:block">
-            <div className="flex items-center space-x-1">
+            <div className="ml-10 flex items-baseline space-x-8">
               {navItems.map((item) => (
                 <button
                   key={item.label}
                   onClick={() => scrollToSection(item.href)}
-                  className="nav-link px-4 py-2 text-sm font-medium text-muted-foreground hover:text-foreground rounded-lg"
+                  className="text-foreground hover:text-primary transition-colors duration-200 px-3 py-2 text-sm font-medium relative group"
                 >
                   {item.label}
+                  <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-primary to-secondary transition-all duration-300 group-hover:w-full" />
                 </button>
               ))}
             </div>
@@ -60,11 +61,11 @@ const Navigation = () => {
           <div className="md:hidden">
             <Button
               variant="ghost"
-              size="icon-sm"
+              size="icon"
               onClick={() => setIsOpen(!isOpen)}
-              className="glass hover:glass-strong transition-all duration-300"
+              className="glass rounded-lg hover:glass-strong transition-all duration-300"
             >
-              {isOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+              {isOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
             </Button>
           </div>
         </div>
@@ -73,12 +74,12 @@ const Navigation = () => {
       {/* Mobile Navigation */}
       {isOpen && (
         <div className="md:hidden">
-          <div className="px-4 pt-2 pb-4 space-y-2 glass-strong shadow-elegant border-b border-glass-border rounded-b-2xl mx-4">
+          <div className="px-2 pt-2 pb-3 space-y-1 glass-strong backdrop-blur-xl border-b border-glass-border shadow-glass rounded-b-xl">
             {navItems.map((item) => (
               <button
                 key={item.label}
                 onClick={() => scrollToSection(item.href)}
-                className="text-muted-foreground hover:text-foreground block px-4 py-3 text-base font-medium transition-all duration-300 w-full text-left rounded-xl hover:glass interactive"
+                className="text-foreground hover:text-primary block px-3 py-2 text-base font-medium transition-all duration-300 w-full text-left rounded-lg hover:glass transform hover:scale-105"
               >
                 {item.label}
               </button>
