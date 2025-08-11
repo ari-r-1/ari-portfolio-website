@@ -14,9 +14,9 @@ const Hero = () => {
       {/* 3D Animated Background */}
       <Scene3D />
       
-      {/* Reduced opacity overlay to make 3D background more visible */}
-      <div className="absolute inset-0 bg-gradient-to-br from-white/5 via-transparent to-white/10" />
-      <div className="absolute inset-0 bg-gradient-to-t from-background/10 via-transparent to-background/5" />
+      {/* Minimal overlay to keep 3D background highly visible */}
+      <div className="absolute inset-0 bg-gradient-to-br from-white/3 via-transparent to-white/5" />
+      <div className="absolute inset-0 bg-gradient-to-t from-background/5 via-transparent to-background/3" />
       
       {/* Elegant Glass Floating Elements - Hidden on small screens */}
       <div className="hidden sm:block absolute top-20 left-4 lg:left-10 animate-float">
