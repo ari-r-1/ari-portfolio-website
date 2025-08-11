@@ -46,16 +46,17 @@ function MathSymbol({ position, symbol, color = "#0ea5e9" }: {
     }
   };
 
+  const material = useMemo(() => new THREE.MeshStandardMaterial({
+    color: color,
+    transparent: true,
+    opacity: 0.9,
+    roughness: 0.2,
+    metalness: 0.6
+  }), [color]);
+
   return (
-    <mesh ref={meshRef} position={position}>
+    <mesh ref={meshRef} position={position} material={material}>
       {getGeometry()}
-      <meshStandardMaterial 
-        color={color} 
-        transparent 
-        opacity={0.9}
-        roughness={0.2}
-        metalness={0.6}
-      />
     </mesh>
   );
 }
@@ -81,10 +82,15 @@ function DataNode({ position, size = 0.15, color = "#64748b" }: {
     }
   });
 
+  const material = useMemo(() => new THREE.MeshStandardMaterial({
+    color: color,
+    transparent: true,
+    opacity: 0.8
+  }), [color]);
+
   return (
-    <mesh ref={meshRef} position={position}>
+    <mesh ref={meshRef} position={position} material={material}>
       <sphereGeometry args={[size, 16, 16]} />
-      <meshStandardMaterial color={color} transparent opacity={0.8} />
     </mesh>
   );
 }
@@ -106,10 +112,16 @@ function StatCube({ position, color = "#475569" }: {
     }
   });
 
+  const material = useMemo(() => new THREE.MeshStandardMaterial({
+    color: color,
+    transparent: true,
+    opacity: 0.8,
+    wireframe: true
+  }), [color]);
+
   return (
-    <mesh ref={meshRef} position={position}>
+    <mesh ref={meshRef} position={position} material={material}>
       <boxGeometry args={[0.3, 0.3, 0.3]} />
-      <meshStandardMaterial color={color} transparent opacity={0.8} wireframe />
     </mesh>
   );
 }
