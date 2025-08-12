@@ -63,7 +63,7 @@ const Hero = () => {
             </p>
           </div>
 
-          <div className="animate-slide-up flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center items-center" style={{ animationDelay: '0.4s' }}>
+          <div className="animate-slide-up flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center items-center" style={{ animationDelay: '0.4s' }}>
             <Button 
               variant="hero" 
               size="xl" 
@@ -73,33 +73,33 @@ const Hero = () => {
               Explore My Work
               <ArrowDown className="w-5 h-5 group-hover:translate-y-1 transition-transform" />
             </Button>
-            <Button 
-              variant="glass" 
-              size="xl"
-              onClick={() => window.open('https://github.com/ari-r-1', '_blank')}
-              className="group bg-white/10 hover:bg-gradient-to-r hover:from-gray-900 hover:to-black text-black hover:text-white border border-white/20 backdrop-blur-md transition-all duration-300 transform hover:scale-105"
-            >
-              <Github className="w-5 h-5 group-hover:rotate-12 transition-transform" />
-              GitHub
-            </Button>
-            <Button 
-              variant="glass" 
-              size="xl"
-              onClick={() => window.open('https://www.linkedin.com/in/r-ari/', '_blank')}
-              className="group bg-white/10 hover:bg-gradient-to-r hover:from-blue-600 hover:to-blue-800 text-black hover:text-white border border-white/20 backdrop-blur-md transition-all duration-300 transform hover:scale-105"
-            >
-              <Linkedin className="w-5 h-5 group-hover:scale-110 transition-transform" />
-              LinkedIn
-            </Button>
-            <Button 
-              variant="glass" 
-              size="xl"
-              onClick={() => window.open('mailto:ariranalyst@gmail.com')}
-              className="group bg-white/10 hover:bg-gradient-to-r hover:from-green-600 hover:to-emerald-600 text-black hover:text-white border border-white/20 backdrop-blur-md transition-all duration-300 transform hover:scale-105"
-            >
-              <Mail className="w-5 h-5 group-hover:scale-110 transition-transform" />
-              Email
-            </Button>
+            
+            {/* Glowing Neon Glass Social Icons */}
+            <div className="flex gap-3">
+              <button 
+                onClick={() => window.open('https://github.com/ari-r-1', '_blank')}
+                className="group p-3 glass-ultra rounded-xl border border-white/20 hover:border-primary/50 transition-all duration-300 transform hover:scale-110 glow-primary"
+                title="GitHub"
+              >
+                <Github className="w-6 h-6 text-foreground group-hover:text-primary transition-all duration-300 filter drop-shadow-glow group-hover:drop-shadow-[0_0_20px_hsl(var(--primary))]" />
+              </button>
+              
+              <button 
+                onClick={() => window.open('https://www.linkedin.com/in/r-ari/', '_blank')}
+                className="group p-3 glass-ultra rounded-xl border border-white/20 hover:border-accent/50 transition-all duration-300 transform hover:scale-110"
+                title="LinkedIn"
+              >
+                <Linkedin className="w-6 h-6 text-foreground group-hover:text-accent transition-all duration-300 filter drop-shadow-glow group-hover:drop-shadow-[0_0_20px_hsl(var(--accent))]" />
+              </button>
+              
+              <button 
+                onClick={() => window.open('mailto:ariranalyst@gmail.com')}
+                className="group p-3 glass-ultra rounded-xl border border-white/20 hover:border-secondary/50 transition-all duration-300 transform hover:scale-110"
+                title="Email"
+              >
+                <Mail className="w-6 h-6 text-foreground group-hover:text-secondary transition-all duration-300 filter drop-shadow-glow group-hover:drop-shadow-[0_0_20px_hsl(var(--secondary))]" />
+              </button>
+            </div>
           </div>
         </div>
       </div>
