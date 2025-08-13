@@ -55,7 +55,7 @@ const Hero = () => {
           </div>
 
           <div className="animate-slide-up" style={{ animationDelay: '0.2s' }}>
-            <p className="text-base sm:text-lg md:text-xl text-black/70 mb-8 max-w-2xl mx-auto leading-relaxed filter drop-shadow-md font-medium">
+            <p className="text-base sm:text-lg md:text-xl text-purple-300 mb-8 max-w-2xl mx-auto leading-relaxed filter drop-shadow-md font-medium">
               Hi, I'm Ari R, a passionate and certified <span className="font-bold text-black bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">Data Scientist</span> skilled in Python, 
               Machine Learning, and Data Analysis. I enjoy transforming data into actionable 
               insights and building intelligent solutions. Currently exploring opportunities 
