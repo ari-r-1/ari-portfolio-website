@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -14,31 +14,16 @@ import {
   FileText
 } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
+import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 
 const Contact = () => {
-  const [isVisible, setIsVisible] = useState(false);
+  const [ref, isVisible] = useScrollAnimation(0.2);
   const [formData, setFormData] = useState({
     name: '',
     email: '',
     message: ''
   });
   const { toast } = useToast();
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setIsVisible(true);
-        }
-      },
-      { threshold: 0.2 }
-    );
-
-    const element = document.getElementById('contact');
-    if (element) observer.observe(element);
-
-    return () => observer.disconnect();
-  }, []);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -89,10 +74,10 @@ ${formData.message}
   ];
 
   return (
-    <section id="contact" className="py-20 bg-muted/10">
+    <section id="contact" ref={ref} className="py-20 bg-muted/10">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className={`transition-all duration-1000 ${isVisible ? 'animate-slide-up' : 'opacity-0'}`}>
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-center mb-4 px-4">
+        <div className={`transition-all duration-1000 transform ${isVisible ? 'animate-fade-in translate-y-0 opacity-100' : 'translate-y-20 opacity-0'}`}>
+          <h2 className={`text-3xl sm:text-4xl md:text-5xl font-bold text-center mb-4 px-4 transition-all duration-1000 delay-200 ${isVisible ? 'animate-scale-in' : 'opacity-0'}`}>
             <span className="text-gradient">Get In Touch</span>
           </h2>
           <p className="text-center text-muted-foreground mb-16 max-w-2xl mx-auto px-4">
