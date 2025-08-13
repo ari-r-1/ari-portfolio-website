@@ -48,7 +48,7 @@ const Hero = () => {
               <span className="block text-white mb-2 font-black tracking-tight filter drop-shadow-[0_0_30px_rgba(255,255,255,0.8)] drop-shadow-[0_0_50px_rgba(255,255,255,0.6)]">
                 Ari R
               </span>
-              <span className="text-xl sm:text-2xl md:text-3xl font-bold text-black/80 filter drop-shadow-lg font-mono tracking-wide">
+              <span className="text-xl sm:text-2xl md:text-3xl font-bold bg-gradient-to-r from-green-400 via-emerald-500 to-red-500 bg-clip-text text-transparent filter drop-shadow-lg font-cosmic tracking-wide">
                 Certified Data Scientist
               </span>
             </h1>

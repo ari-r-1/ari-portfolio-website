@@ -13,6 +13,7 @@ export default {
       fontFamily: {
         sans: ['Inter', 'system-ui', 'sans-serif'],
         mono: ['JetBrains Mono', 'Fira Code', 'monospace'],
+        cosmic: ['Orbitron', 'system-ui', 'sans-serif'],
       },
 		container: {
 			center: true,
