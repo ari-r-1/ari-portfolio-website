@@ -1,11 +1,27 @@
+import { useEffect, useState } from "react";
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Target, User, Briefcase } from "lucide-react";
 import profilePhoto from "@/assets/profile-photo.jpg";
-import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 
 const About = () => {
-  const [ref, isVisible] = useScrollAnimation(0.3);
+  const [isVisible, setIsVisible] = useState(false);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+        }
+      },
+      { threshold: 0.3 }
+    );
+
+    const element = document.getElementById('about');
+    if (element) observer.observe(element);
+
+    return () => observer.disconnect();
+  }, []);
 
   const coreSkills = [
     "Python", "SQL", "Machine Learning", "Statistical Analysis", "Data Visualization", 
@@ -16,10 +32,10 @@ const About = () => {
   ];
 
   return (
-    <section id="about" ref={ref} className="py-20 bg-background">
+    <section id="about" className="py-20 bg-background">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className={`transition-all duration-1000 transform ${isVisible ? 'animate-fade-in translate-y-0 opacity-100' : 'translate-y-20 opacity-0'}`}>
-          <h2 className={`text-3xl sm:text-4xl md:text-5xl font-bold text-center mb-4 px-4 transition-all duration-1000 delay-200 ${isVisible ? 'animate-slide-up' : 'opacity-0'}`}>
+        <div className={`transition-all duration-1000 ${isVisible ? 'animate-slide-up' : 'opacity-0'}`}>
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-center mb-4 px-4">
             <span className="text-gradient">About Me</span>
           </h2>
           <p className="text-center text-muted-foreground mb-16 max-w-2xl mx-auto px-4">

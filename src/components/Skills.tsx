@@ -1,6 +1,6 @@
+import { useEffect, useState } from "react";
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 import { 
   Code, 
   Database, 
@@ -15,7 +15,23 @@ import {
 } from "lucide-react";
 
 const Skills = () => {
-  const [ref, isVisible] = useScrollAnimation(0.2);
+  const [isVisible, setIsVisible] = useState(false);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+        }
+      },
+      { threshold: 0.2 }
+    );
+
+    const element = document.getElementById('skills');
+    if (element) observer.observe(element);
+
+    return () => observer.disconnect();
+  }, []);
 
   const skillCategories = [
     {
@@ -132,10 +148,10 @@ const Skills = () => {
   ];
 
   return (
-    <section id="skills" ref={ref} className="py-12 sm:py-16 md:py-20 bg-muted/10">
+    <section id="skills" className="py-12 sm:py-16 md:py-20 bg-muted/10">
       <div className="max-w-7xl mx-auto px-3 xs:px-4 sm:px-6 lg:px-8">
-        <div className={`transition-all duration-1000 transform ${isVisible ? 'animate-fade-in translate-y-0 opacity-100' : 'translate-y-20 opacity-0'}`}>
-          <h2 className={`text-2xl xs:text-3xl sm:text-4xl md:text-5xl font-bold text-center mb-3 sm:mb-4 transition-all duration-1000 delay-200 ${isVisible ? 'animate-scale-in' : 'opacity-0'}`}>
+        <div className={`transition-all duration-1000 ${isVisible ? 'animate-slide-up' : 'opacity-0'}`}>
+          <h2 className="text-2xl xs:text-3xl sm:text-4xl md:text-5xl font-bold text-center mb-3 sm:mb-4">
             <span className="text-gradient">Technical Skills</span>
           </h2>
           <p className="text-center text-muted-foreground mb-2 text-sm sm:text-base">
@@ -150,8 +166,8 @@ const Skills = () => {
             {skillCategories.map((category, categoryIndex) => (
               <Card 
                 key={category.title} 
-                className={`card-3d p-4 sm:p-5 lg:p-6 hover:scale-105 transition-all duration-500 border-glass-border hover:shadow-glass transform ${isVisible ? 'animate-slide-in-right' : 'translate-x-20 opacity-0'}`}
-                style={{ animationDelay: `${categoryIndex * 0.15}s` }}
+                className="card-3d p-4 sm:p-5 lg:p-6 hover:scale-105 transition-all duration-300 border-glass-border hover:shadow-glass"
+                style={{ animationDelay: `${categoryIndex * 0.1}s` }}
               >
                 <div className="flex items-center gap-2 sm:gap-3 mb-4 sm:mb-6">
                   <div className={`p-1.5 sm:p-2 ${category.bgColor} rounded-lg skill-icon`}>
