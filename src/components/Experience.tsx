@@ -1,26 +1,10 @@
-import { useEffect, useState } from "react";
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Briefcase, Calendar, MapPin, TrendingUp } from "lucide-react";
+import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 
 const Experience = () => {
-  const [isVisible, setIsVisible] = useState(false);
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setIsVisible(true);
-        }
-      },
-      { threshold: 0.3 }
-    );
-
-    const element = document.getElementById('experience');
-    if (element) observer.observe(element);
-
-    return () => observer.disconnect();
-  }, []);
+  const [ref, isVisible] = useScrollAnimation(0.3);
 
   const achievements = [
     "30% increase in email open rates",
@@ -36,10 +20,10 @@ const Experience = () => {
   ];
 
   return (
-    <section id="experience" className="py-20 bg-background">
+    <section id="experience" ref={ref} className="py-20 bg-background">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className={`transition-all duration-1000 ${isVisible ? 'animate-slide-up' : 'opacity-0'}`}>
-          <h2 className="text-4xl md:text-5xl font-bold text-center mb-4">
+        <div className={`transition-all duration-1000 transform ${isVisible ? 'animate-fade-in translate-y-0 opacity-100' : 'translate-y-20 opacity-0'}`}>
+          <h2 className={`text-4xl md:text-5xl font-bold text-center mb-4 transition-all duration-1000 delay-300 ${isVisible ? 'animate-scale-in' : 'opacity-0'}`}>
             <span className="text-gradient">Professional Experience</span>
           </h2>
           <p className="text-center text-muted-foreground mb-16 max-w-2xl mx-auto">
@@ -47,7 +31,7 @@ const Experience = () => {
           </p>
 
           <div className="max-w-4xl mx-auto">
-            <Card className="card-3d p-8 hover:scale-105 transition-all duration-500 group">
+            <Card className={`card-3d p-8 hover:scale-105 transition-all duration-500 group transform ${isVisible ? 'animate-slide-in-right' : 'translate-x-20 opacity-0'}`} style={{ animationDelay: '0.5s' }}>
               <div className="space-y-6">
                 {/* Header */}
                 <div className="flex items-start gap-4">

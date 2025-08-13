@@ -1,27 +1,11 @@
-import { useEffect, useState } from "react";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { ExternalLink, Github } from "lucide-react";
+import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 
 const Projects = () => {
-  const [isVisible, setIsVisible] = useState(false);
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setIsVisible(true);
-        }
-      },
-      { threshold: 0.2 }
-    );
-
-    const element = document.getElementById('projects');
-    if (element) observer.observe(element);
-
-    return () => observer.disconnect();
-  }, []);
+  const [ref, isVisible] = useScrollAnimation(0.2);
 
   const projects = [
     {
@@ -55,10 +39,10 @@ const Projects = () => {
   ];
 
   return (
-    <section id="projects" className="py-12 sm:py-16 md:py-20 bg-background">
+    <section id="projects" ref={ref} className="py-12 sm:py-16 md:py-20 bg-background">
       <div className="max-w-7xl mx-auto px-3 xs:px-4 sm:px-6 lg:px-8">
-        <div className={`transition-all duration-1000 ${isVisible ? 'animate-slide-up' : 'opacity-0'}`}>
-          <h2 className="text-2xl xs:text-3xl sm:text-4xl md:text-5xl font-bold text-center mb-3 sm:mb-4">
+        <div className={`transition-all duration-1000 transform ${isVisible ? 'animate-fade-in translate-y-0 opacity-100' : 'translate-y-20 opacity-0'}`}>
+          <h2 className={`text-2xl xs:text-3xl sm:text-4xl md:text-5xl font-bold text-center mb-3 sm:mb-4 transition-all duration-1000 delay-200 ${isVisible ? 'animate-scale-in' : 'opacity-0'}`}>
             <span className="text-gradient">Featured Projects</span>
           </h2>
           <p className="text-center text-muted-foreground mb-8 sm:mb-12 md:mb-16 max-w-2xl mx-auto text-sm sm:text-base px-4">
@@ -70,8 +54,8 @@ const Projects = () => {
             {projects.map((project, index) => (
               <Card 
                 key={project.title}
-                className="card-3d p-4 sm:p-5 lg:p-6 hover:scale-105 transition-all duration-500 group border-glass-border hover:shadow-glass"
-                style={{ animationDelay: `${index * 0.1}s` }}
+                className={`card-3d p-4 sm:p-5 lg:p-6 hover:scale-105 transition-all duration-500 group border-glass-border hover:shadow-glass transform ${isVisible ? 'animate-scale-in' : 'scale-90 opacity-0'}`}
+                style={{ animationDelay: `${index * 0.2}s` }}
               >
                 <div className="space-y-3 sm:space-y-4">
                   {/* Category Badge */}
